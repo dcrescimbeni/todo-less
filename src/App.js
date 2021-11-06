@@ -1,5 +1,5 @@
 import './App.css';
-import AddItem from './AddItem/AddItem';
+import TaskColumn from './TaskColumn/TaskColumn';
 import { useState } from 'react';
 
 let items = ['item1', 'item2', 'item3', 'item4'];
@@ -28,18 +28,12 @@ function App() {
           })}
         </ul>
       </div>
-      <div className="taskColumn column">
-        <AddItem
-          handleAdd={handleAdd}
-          handleDescriptionChange={handleDescriptionChange}
-          taskDescription={taskDescription}
-        />
-        <ul>
-          {todoList.map((element, index) => {
-            return <li key={index}>{element}</li>;
-          })}
-        </ul>
-      </div>
+      <TaskColumn
+        todoList={todoList}
+        handleAdd={handleAdd}
+        handleDescriptionChange={handleDescriptionChange}
+        taskDescription={taskDescription}
+      />
     </div>
   );
 }
