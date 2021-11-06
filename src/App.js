@@ -54,9 +54,21 @@ function App() {
     setTodoList(newTodo);
   }
 
+  function handleOnDragEnd(result) {
+    const newList = [...todoList];
+    const [reorderedTask] = newList.splice(result.source.index, 1);
+    newList.splice(result.destination.index, 0, reorderedTask);
+
+    setTodoList(newList);
+  }
+
   return (
     <div className="App">
-      <TimeColumn todoList={todoList} setTodoList={setTodoList} />
+      <TimeColumn
+        todoList={todoList}
+        setTodoList={setTodoList}
+        handleOnDragEnd={handleOnDragEnd}
+      />
       <TaskColumn
         todoList={todoList}
         handleAdd={handleAdd}
@@ -65,6 +77,7 @@ function App() {
         taskDuration={taskDuration}
         handleDurationChange={handleDurationChange}
         handleToggledTask={handleToggledTask}
+        handleOnDragEnd={handleOnDragEnd}
       />
     </div>
   );

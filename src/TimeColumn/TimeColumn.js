@@ -1,21 +1,12 @@
-import { DragDropContext } from 'react-beautiful-dnd';
-import { Droppable } from 'react-beautiful-dnd';
-import { Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-export default function TimeColumn({ todoList, setTodoList }) {
+export default function TimeColumn({ todoList, setTodoList, handleOnDragEnd }) {
   // Code to handle reordering the list
-  function handleOnDragEnd(result) {
-    const newList = [...todoList];
-    const [reorderedTask] = newList.splice(result.source.index, 1);
-    newList.splice(result.destination.index, 0, reorderedTask);
-
-    setTodoList(newList);
-  }
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <div className="timeColumn column">
-        <Droppable droppableId="tasks">
+        <Droppable droppableId="taskTimes">
           {(provided) => (
             <ul {...provided.droppableProps} ref={provided.innerRef}>
               {todoList.map((element, index) => {
