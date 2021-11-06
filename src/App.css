@@ -1,11 +1,12 @@
 .App {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .column {
   background: #ffffff;
-  flex: 0 1 550px;
   margin: 30px;
   border-radius: 10px;
+  flex-basis: clamp(350px, 35vw, 550px);
 }

@@ -1,4 +1,5 @@
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import styled from 'styled-components';
 
 export default function TimeColumn({ todoList, setTodoList, handleOnDragEnd }) {
   // Code to handle reordering the list

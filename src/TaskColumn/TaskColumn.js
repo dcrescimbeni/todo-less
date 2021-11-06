@@ -1,4 +1,6 @@
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import styled from 'styled-components';
+
 import AddItem from '../AddItem/AddItem';
 
 export default function TaskColumn({
@@ -25,7 +27,7 @@ export default function TaskColumn({
         <div>
           <Droppable droppableId="taskList">
             {(provided) => (
-              <ul {...provided.droppableProps} ref={provided.innerRef}>
+              <ListWrapper {...provided.droppableProps} ref={provided.innerRef}>
                 {todoList.map((element, index) => {
                   return (
                     <Draggable
@@ -34,7 +36,7 @@ export default function TaskColumn({
                       index={index}
                     >
                       {(provided) => (
-                        <li
+                        <TaskElement
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
                           ref={provided.innerRef}
@@ -49,13 +51,13 @@ export default function TaskColumn({
                             }
                           />
                           {element.description}, duration: {element.duration}
-                        </li>
+                        </TaskElement>
                       )}
                     </Draggable>
                   );
                 })}
                 {provided.placeholder}
-              </ul>
+              </ListWrapper>
             )}
           </Droppable>
         </div>
@@ -63,5 +65,14 @@ export default function TaskColumn({
     </div>
   );
 }
+
+const ListWrapper = styled.ul`
+  list-style: none;
+  padding: 0px;
+`;
+
+const TaskElement = styled.li`
+  margin: 0px;
+`;
 
 // TODO: Add drag and drop
