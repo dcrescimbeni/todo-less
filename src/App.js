@@ -1,28 +1,42 @@
 import './App.css';
+import AddItem from './AddItem/AddItem';
+import { useState } from 'react';
 
-let todoList = [
-  { id: 1, desc: 'item 1', duration: 1 },
-  { id: 2, desc: 'item 2', duration: 1 },
-  { id: 3, desc: 'item 3', duration: 3 },
-  { id: 4, desc: 'item 4', duration: 1 },
-  { id: 5, desc: 'item 5', duration: 2 },
-  { id: 6, desc: 'item 6', duration: 1 },
-];
+let items = ['item1', 'item2', 'item3', 'item4'];
 
 function App() {
+  const [todoList, setTodoList] = useState(items);
+  const [taskDescription, setTaskDescription] = useState('');
+
+  // Handles
+  function handleAdd() {
+    const tasks = [...todoList, taskDescription];
+    setTodoList(tasks);
+    setTaskDescription('');
+  }
+
+  function handleDescriptionChange(e) {
+    setTaskDescription(e.target.value);
+  }
+
   return (
     <div className="App">
       <div className="timeColumn column">
         <ul>
-          {todoList.map((element) => {
-            return <li key={element.id}>{element.desc}</li>;
+          {todoList.map((element, index) => {
+            return <li key={index}>{element}</li>;
           })}
         </ul>
       </div>
       <div className="taskColumn column">
+        <AddItem
+          handleAdd={handleAdd}
+          handleDescriptionChange={handleDescriptionChange}
+          taskDescription={taskDescription}
+        />
         <ul>
-          {todoList.map((element) => {
-            return <li key={element.id}>{element.desc}</li>;
+          {todoList.map((element, index) => {
+            return <li key={index}>{element}</li>;
           })}
         </ul>
       </div>
