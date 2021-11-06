@@ -14,6 +14,7 @@ export default function AddItem({
         id="itemDescription"
         placeholder="Description"
         onChange={handleDescriptionChange}
+        autoComplete="off"
       />
       <input
         type="text"
@@ -22,6 +23,7 @@ export default function AddItem({
         id="itemDuration"
         placeholder="Duration"
         onChange={handleDurationChange}
+        autoComplete="off"
       />
       <input type="button" value="Add" onClick={handleAdd} />
     </div>
