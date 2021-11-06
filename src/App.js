@@ -56,7 +56,7 @@ function App() {
 
   return (
     <div className="App">
-      <TimeColumn todoList={todoList} />
+      <TimeColumn todoList={todoList} setTodoList={setTodoList} />
       <TaskColumn
         todoList={todoList}
         handleAdd={handleAdd}
