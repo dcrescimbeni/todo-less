@@ -1,5 +1,6 @@
 import './App.css';
 import TaskColumn from './TaskColumn/TaskColumn';
+import TimeColumn from './TimeColumn/TimeColumn';
 import { useState } from 'react';
 
 let items = [
@@ -55,18 +56,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="timeColumn column">
-        <ul>
-          {todoList.map((element) => {
-            return (
-              <li key={element.id}>
-                {element.description}, duration: {element.duration}, completed:{' '}
-                {element.completed ? 'yes' : 'no'}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <TimeColumn todoList={todoList} />
       <TaskColumn
         todoList={todoList}
         handleAdd={handleAdd}
