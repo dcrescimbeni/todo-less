@@ -46,12 +46,24 @@ function App() {
     setTaskDuration(e.target.value);
   }
 
+  function handleToggledTask(taskId, completedStatus) {
+    const newTodo = [...todoList];
+    const targetTask = newTodo.find((element) => element.id === taskId);
+    targetTask.completed = completedStatus;
+    setTodoList(newTodo);
+  }
+
   return (
     <div className="App">
       <div className="timeColumn column">
         <ul>
           {todoList.map((element) => {
-            return <li key={element.id}>{element.description}</li>;
+            return (
+              <li key={element.id}>
+                {element.description}, duration: {element.duration}, completed:{' '}
+                {element.completed ? 'yes' : 'no'}
+              </li>
+            );
           })}
         </ul>
       </div>
@@ -62,6 +74,7 @@ function App() {
         handleDescriptionChange={handleDescriptionChange}
         taskDuration={taskDuration}
         handleDurationChange={handleDurationChange}
+        handleToggledTask={handleToggledTask}
       />
     </div>
   );

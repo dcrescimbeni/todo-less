@@ -7,6 +7,7 @@ export default function TaskColumn({
   handleDescriptionChange,
   taskDuration,
   handleDurationChange,
+  handleToggledTask,
 }) {
   return (
     <div className="taskColumn column">
@@ -21,6 +22,15 @@ export default function TaskColumn({
         {todoList.map((element) => {
           return (
             <li key={element.id}>
+              <input
+                type="checkbox"
+                name="completedStatus"
+                id="completedStatus"
+                checked={element.completed}
+                onChange={(e) =>
+                  handleToggledTask(element.id, e.target.checked)
+                }
+              />
               {element.description}, duration: {element.duration}
             </li>
           );
