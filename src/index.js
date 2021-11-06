@@ -10,7 +10,7 @@ ReactDOM.render(
       @import
       url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
     </style>
-    ;
+
     <App />
   </React.StrictMode>,
   document.getElementById('root')
