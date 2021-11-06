@@ -4,11 +4,20 @@ import TimeColumn from './TimeColumn/TimeColumn';
 import { useState } from 'react';
 
 let items = [
-  { id: 1, description: 'item1', duration: 1, completed: false },
-  { id: 2, description: 'item2', duration: 2, completed: true },
-  { id: 3, description: 'item3', duration: 1, completed: false },
-  { id: 4, description: 'item4', duration: 1, completed: false },
-  { id: 5, description: 'item5', duration: 4, completed: true },
+  {
+    id: 1,
+    description: 'Design app prototype in Figma',
+    duration: 2,
+    completed: false,
+  },
+  { id: 2, description: 'Start React project', duration: 1, completed: true },
+  {
+    id: 3,
+    description: 'Implement first working prototype and push to Github',
+    duration: 4,
+    completed: false,
+  },
+  { id: 4, description: 'Celebrate with beer', duration: 1, completed: false },
 ];
 
 function App() {
