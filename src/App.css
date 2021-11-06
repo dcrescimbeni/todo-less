@@ -1,0 +1,11 @@
+.App {
+  display: flex;
+  justify-content: center;
+}
+
+.column {
+  background: #ffffff;
+  flex: 0 1 550px;
+  margin: 30px;
+  border-radius: 10px;
+}
