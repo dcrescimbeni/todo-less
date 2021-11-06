@@ -1,7 +1,9 @@
 export default function AddItem({
   handleAdd,
-  handleDescriptionChange,
   taskDescription,
+  handleDescriptionChange,
+  taskDuration,
+  handleDurationChange,
 }) {
   return (
     <div>
@@ -12,6 +14,14 @@ export default function AddItem({
         id="itemDescription"
         placeholder="Description"
         onChange={handleDescriptionChange}
+      />
+      <input
+        type="text"
+        value={taskDuration}
+        name="itemDuration"
+        id="itemDuration"
+        placeholder="Duration"
+        onChange={handleDurationChange}
       />
       <input type="button" value="Add" onClick={handleAdd} />
     </div>
