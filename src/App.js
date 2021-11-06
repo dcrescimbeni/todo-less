@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 let todoList = ['item1', 'item2', 'item3'];
