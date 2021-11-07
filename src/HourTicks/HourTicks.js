@@ -14,8 +14,7 @@ export default function HourTicks() {
         {hours.map((element, index) => {
           return (
             <HourBlockElement key={index}>
-              <HourTicker>{element}</HourTicker>
-              <HourLine></HourLine>
+              <HourTicker>{element}:00</HourTicker>
             </HourBlockElement>
           );
         })}
@@ -32,14 +31,20 @@ const MainWrapper = styled.div`
   left: -100px;
 `;
 
-const HourBlockElement = styled.div``;
+const HourBlockElement = styled.div`
+  border-bottom: 1px solid #adb5bd;
+  height: 68px;
+  display: flex;
+  align-items: center;
 
-const HourTicker = styled.p`
-  padding: 30px;
+  &:first-of-type {
+    border-top: 1px solid #adb5bd;
+  }
 `;
 
-const HourLine = styled.div`
-  border-bottom: 1px solid red;
-  height: 1px;
-  width: 100%;
+const HourTicker = styled.p`
+  font-weight: bold;
+  font-size: 12px;
+  color: #adb5bd;
+  margin-left: 6px;
 `;

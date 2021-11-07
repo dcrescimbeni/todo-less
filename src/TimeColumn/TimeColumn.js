@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import HourTicks from '../HourTicks/HourTicks';
 
 export default function TimeColumn({ todoList, setTodoList, handleOnDragEnd }) {
-  // Code to handle reordering the list
+  // TODO: Fix column height
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -54,7 +54,7 @@ const UnstyledList = styled.ul`
   list-style: none;
   padding: 0px;
   position: relative;
-  top: -100%;
+  top: calc(-100% - 10px);
 `;
 
 const MainColumn = styled.div`
@@ -62,12 +62,13 @@ const MainColumn = styled.div`
 `;
 
 const TaskElement = styled.li`
-  height: ${(props) => props.size * 60}px;
+  height: ${(props) => props.size * 68 - 12 + props.size * 1 - 1}px;
+  margin: 11px 0px;
   border: 1px solid #adb5bd;
   border-radius: 5px;
-  margin: 12px;
   display: flex;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  background-color: white;
 `;
 
 const ColorCode = styled.div`
