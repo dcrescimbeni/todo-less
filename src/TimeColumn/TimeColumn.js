@@ -1,5 +1,6 @@
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
+import HourTicks from '../HourTicks/HourTicks';
 
 export default function TimeColumn({ todoList, setTodoList, handleOnDragEnd }) {
   // Code to handle reordering the list
@@ -7,6 +8,8 @@ export default function TimeColumn({ todoList, setTodoList, handleOnDragEnd }) {
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <MainColumn className="timeColumn column">
+        <HourTicks></HourTicks>
+
         <Droppable droppableId="taskTimes">
           {(provided) => (
             <UnstyledList {...provided.droppableProps} ref={provided.innerRef}>
@@ -50,6 +53,8 @@ export default function TimeColumn({ todoList, setTodoList, handleOnDragEnd }) {
 const UnstyledList = styled.ul`
   list-style: none;
   padding: 0px;
+  position: relative;
+  top: -100%;
 `;
 
 const MainColumn = styled.div`
