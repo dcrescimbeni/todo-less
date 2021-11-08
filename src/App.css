@@ -9,4 +9,5 @@
   margin: 30px;
   border-radius: 10px;
   flex-basis: clamp(350px, 35vw, 550px);
+  display: flex;
 }

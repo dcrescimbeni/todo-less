@@ -9,52 +9,58 @@ export default function TimeColumn({ todoList, setTodoList, handleOnDragEnd }) {
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <MainColumn className="timeColumn column">
         <HourTicks></HourTicks>
-
-        <Droppable droppableId="taskTimes">
-          {(provided) => (
-            <UnstyledList {...provided.droppableProps} ref={provided.innerRef}>
-              {todoList.map((element, index) => {
-                return (
-                  <Draggable
-                    key={element.id}
-                    draggableId={element.id.toString()}
-                    index={index}
-                  >
-                    {(provided) => (
-                      <TaskElement
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
-                        size={element.duration}
-                      >
-                        <ColorCode></ColorCode>
-                        <TaskDescriptionWrapper>
-                          <ElementDescription>
-                            {element.description}
-                          </ElementDescription>
-                          <ElementDuration>
-                            {element.duration} hour
-                          </ElementDuration>
-                        </TaskDescriptionWrapper>
-                      </TaskElement>
-                    )}
-                  </Draggable>
-                );
-              })}
-              {provided.placeholder}
-            </UnstyledList>
-          )}
-        </Droppable>
+        <TimeBlockWrapper>
+          <Droppable droppableId="taskTimes">
+            {(provided) => (
+              <UnstyledList
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {todoList.map((element, index) => {
+                  return (
+                    <Draggable
+                      key={element.id}
+                      draggableId={element.id.toString()}
+                      index={index}
+                    >
+                      {(provided) => (
+                        <TaskElement
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          ref={provided.innerRef}
+                          size={element.duration}
+                        >
+                          <ColorCode></ColorCode>
+                          <TaskDescriptionWrapper>
+                            <ElementDescription>
+                              {element.description}
+                            </ElementDescription>
+                            <ElementDuration>
+                              {element.duration} hour
+                            </ElementDuration>
+                          </TaskDescriptionWrapper>
+                        </TaskElement>
+                      )}
+                    </Draggable>
+                  );
+                })}
+                {provided.placeholder}
+              </UnstyledList>
+            )}
+          </Droppable>
+        </TimeBlockWrapper>
       </MainColumn>
     </DragDropContext>
   );
 }
 
+//TODO: Fix alignment issues with hour markers
+
+const TimeBlockWrapper = styled.div``;
+
 const UnstyledList = styled.ul`
   list-style: none;
   padding: 0px;
-  position: relative;
-  top: calc(-100% - 10px);
 `;
 
 const MainColumn = styled.div`

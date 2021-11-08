@@ -24,11 +24,9 @@ export default function HourTicks() {
 }
 
 const MainWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 0;
-  left: -100px;
+  width: 200%;
+  margin-left: -100px;
+  margin-right: -100%;
 `;
 
 const HourBlockElement = styled.div`
@@ -46,5 +44,5 @@ const HourTicker = styled.p`
   font-weight: bold;
   font-size: 12px;
   color: #adb5bd;
-  margin-left: 6px;
+  margin-left: 15px;
 `;
