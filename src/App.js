@@ -9,15 +9,29 @@ let items = [
     description: 'Design app prototype in Figma',
     duration: 2,
     completed: false,
+    color: 'EF4444',
   },
-  { id: 2, description: 'Start React project', duration: 1, completed: true },
+  {
+    id: 2,
+    description: 'Start React project',
+    duration: 1,
+    completed: true,
+    color: 'F59E0B',
+  },
   {
     id: 3,
     description: 'Implement first working prototype and push to Github',
     duration: 4,
     completed: false,
+    color: '3B82F6',
   },
-  { id: 4, description: 'Celebrate with beer', duration: 1, completed: false },
+  {
+    id: 4,
+    description: 'Celebrate with beer',
+    duration: 1,
+    completed: true,
+    color: '10B981',
+  },
 ];
 
 function App() {
@@ -28,6 +42,7 @@ function App() {
   const [taskDescription, setTaskDescription] = useState('');
   const [taskDuration, setTaskDuration] = useState(1);
   const [taskCompleted, setTaskCompleted] = useState(false);
+  const [taskColor, setTaskColor] = useState('blue');
 
   // Handles
   function handleAdd() {
@@ -41,6 +56,7 @@ function App() {
         description: taskDescription,
         duration: taskDuration,
         completed: false,
+        color: taskColor,
       },
     ];
     setTodoList(tasks);

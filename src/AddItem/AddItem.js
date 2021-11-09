@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 export default function AddItem({
   handleAdd,
   taskDescription,
@@ -6,7 +8,8 @@ export default function AddItem({
   handleDurationChange,
 }) {
   return (
-    <div>
+    <MainWrapper>
+      <DescriptionHelper>Add task</DescriptionHelper>
       <input
         type="text"
         value={taskDescription}
@@ -26,6 +29,21 @@ export default function AddItem({
         autoComplete="off"
       />
       <input type="button" value="Add" onClick={handleAdd} />
-    </div>
+    </MainWrapper>
   );
 }
+
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #dee2e6;
+`;
+
+const DescriptionHelper = styled.p`
+  font-size: 12px;
+  color: #adb5bd;
+  display: block;
+`;

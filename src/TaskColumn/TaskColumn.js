@@ -41,16 +41,18 @@ export default function TaskColumn({
                           {...provided.dragHandleProps}
                           ref={provided.innerRef}
                         >
-                          <input
+                          <CheckBox
                             type="checkbox"
                             name="completedStatus"
                             id="completedStatus"
+                            color={element.color}
                             checked={element.completed}
                             onChange={(e) =>
                               handleToggledTask(element.id, e.target.checked)
                             }
                           />
-                          {element.description}, duration: {element.duration}
+                          {element.description}, duration: {element.duration},
+                          color: {element.color}
                         </TaskElement>
                       )}
                     </Draggable>
@@ -73,6 +75,16 @@ const ListWrapper = styled.ul`
 
 const TaskElement = styled.li`
   margin: 0px;
+`;
+
+const CheckBox = styled.input`
+  appearance: none;
+  margin: 3px;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 0.15rem solid #${(props) => props.color};
+  border-radius: 50%;
+  transform: translateY(0.3rem);
 `;
 
 // TODO: Add drag and drop
