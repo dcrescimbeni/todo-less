@@ -24,9 +24,13 @@ export default function HourTicks() {
 }
 
 const MainWrapper = styled.div`
-  width: 200%;
-  margin-left: -100px;
-  margin-right: -100%;
+  flex-basis: clamp(350px, 35vw, 550px);
+  margin-left: -50%;
+
+  /* flex-basis: clamp(650px, 30vw, 800px);
+  margin-left: -85px;
+  margin-right: -100%; */
+  /* border: 1px solid red; */
 `;
 
 const HourBlockElement = styled.div`

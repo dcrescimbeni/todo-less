@@ -8,7 +8,6 @@ export default function TimeColumn({ todoList, setTodoList, handleOnDragEnd }) {
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <MainColumn className="timeColumn column">
-        <HourTicks></HourTicks>
         <TimeBlockWrapper>
           <Droppable droppableId="taskTimes">
             {(provided) => (
@@ -50,11 +49,12 @@ export default function TimeColumn({ todoList, setTodoList, handleOnDragEnd }) {
           </Droppable>
         </TimeBlockWrapper>
       </MainColumn>
+      {/* <HourTicks></HourTicks> */}
     </DragDropContext>
   );
 }
 
-//TODO: Fix alignment issues with hour markers
+// TODO: Implement hour markers
 
 const TimeBlockWrapper = styled.div``;
 
