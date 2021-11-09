@@ -1,3 +1,5 @@
+import ColorPicker from '../ColorPicker/ColorPicker';
+
 import styled from 'styled-components';
 
 export default function AddItem({
@@ -29,6 +31,7 @@ export default function AddItem({
         autoComplete="off"
       />
       <input type="button" value="Add" onClick={handleAdd} />
+      <ColorPicker></ColorPicker>
     </MainWrapper>
   );
 }
