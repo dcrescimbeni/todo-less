@@ -1,4 +1,3 @@
-import ColorPicker from '../ColorPicker/ColorPicker';
 import {
   Listbox,
   ListboxInput,
@@ -32,16 +31,18 @@ export default function AddItem({
         autoComplete="off"
       />
       <PickerWrapper>
-        <DurationInput
-          type="text"
-          value={taskDuration}
-          name="itemDuration"
-          id="itemDuration"
-          placeholder="Duration"
-          onChange={handleDurationChange}
-          autoComplete="off"
-        />
-        hour
+        <DurationWrapper>
+          <DurationInput
+            type="text"
+            value={taskDuration}
+            name="itemDuration"
+            id="itemDuration"
+            placeholder="Duration"
+            onChange={handleDurationChange}
+            autoComplete="off"
+          />
+          hour
+        </DurationWrapper>
         <ColorPickerList></ColorPickerList>
       </PickerWrapper>
       <AddTaskButton type="button" value="Add" onClick={handleAdd} />
@@ -52,7 +53,11 @@ export default function AddItem({
 function ColorPickerList() {
   return (
     <ListboxInput defaultValue="blue">
-      <ListboxButton />
+      <ColorWrapper>
+        {/* TODO: change color dynamically */}
+        <ColorBlob color="3B82F6"></ColorBlob>
+        <ListboxButton />
+      </ColorWrapper>
       <ListboxPopover>
         <ListboxList>
           <ListboxOption value="blue">
@@ -100,12 +105,17 @@ const DescriptionInput = styled.input`
 
 const DurationInput = styled.input`
   font-weight: bold;
-  width: 50px;
+  font-size: 16px;
+  width: 2rem;
   border: 0px;
+  text-align: right;
+  margin-right: 5px;
 `;
 
 const PickerWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const ColorOrb = styled.div`
@@ -125,4 +135,22 @@ const AddTaskButton = styled.input`
   margin-top: 20px;
   border: 0px;
   border-radius: 5px;
+`;
+
+const ColorBlob = styled.div`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #${(props) => props.color};
+  margin-right: 5px;
+`;
+
+const DurationWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ColorWrapper = styled.div`
+  display: flex;
+  margin-right: 16px;
 `;
