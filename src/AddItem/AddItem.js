@@ -45,47 +45,23 @@ export default function AddItem({
           />
           hour
         </DurationWrapper>
-        <ColorPickerList
-          taskColor={taskColor}
-          handleColorChange={handleColorChange}
-        ></ColorPickerList>
+
+        <ColorWrapper>
+          <ColorOrb color={taskColor}></ColorOrb>
+          <Listbox
+            onChange={(e) => {
+              handleColorChange(e);
+            }}
+          >
+            <ListboxOption value="blue">Blue</ListboxOption>
+            <ListboxOption value="red">Red</ListboxOption>
+            <ListboxOption value="green">Green</ListboxOption>
+            <ListboxOption value="yellow">Yellow</ListboxOption>
+          </Listbox>
+        </ColorWrapper>
       </PickerWrapper>
       <AddTaskButton type="button" value="Add" onClick={handleAdd} />
     </MainWrapper>
-  );
-}
-
-function ColorPickerList(taskColor, handleColorChange) {
-  return (
-    <ListboxInput
-      // value={taskColor}
-      defaultValue={taskColor}
-      onChange={(e) => handleColorChange(e)}
-    >
-      {console.log(taskColor)}
-      {console.log(handleColorChange)}
-      <ColorWrapper>
-        {/* TODO: change color dynamically */}
-        <ColorBlob color="3B82F6"></ColorBlob>
-        <ListboxButton />
-      </ColorWrapper>
-      <ListboxPopover>
-        <ListboxList>
-          <ListboxOption value="blue">
-            <ColorOrb color="3B82F6"></ColorOrb> Blue
-          </ListboxOption>
-          <ListboxOption value="red">
-            <ColorOrb color="EF4444"></ColorOrb> Red
-          </ListboxOption>
-          <ListboxOption value="green">
-            <ColorOrb color="10B981"></ColorOrb> Green
-          </ListboxOption>
-          <ListboxOption value="yellow">
-            <ColorOrb color="F59E0B"></ColorOrb> Yellow
-          </ListboxOption>
-        </ListboxList>
-      </ListboxPopover>
-    </ListboxInput>
   );
 }
 
@@ -146,14 +122,6 @@ const AddTaskButton = styled.input`
   margin-top: 20px;
   border: 0px;
   border-radius: 5px;
-`;
-
-const ColorBlob = styled.div`
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #${(props) => props.color};
-  margin-right: 5px;
 `;
 
 const DurationWrapper = styled.div`

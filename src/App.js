@@ -34,6 +34,13 @@ let items = [
   },
 ];
 
+let colors = {
+  red: 'EF4444',
+  yellow: 'F59E0B',
+  blue: '3B82F6',
+  green: '10B981',
+};
+
 function App() {
   const [todoList, setTodoList] = useState(items);
 
@@ -42,7 +49,7 @@ function App() {
   const [taskDescription, setTaskDescription] = useState('');
   const [taskDuration, setTaskDuration] = useState(1);
   const [taskCompleted, setTaskCompleted] = useState(false);
-  const [taskColor, setTaskColor] = useState('blue');
+  const [taskColor, setTaskColor] = useState(colors.blue);
 
   // Handles
   function handleAdd() {
@@ -80,7 +87,7 @@ function App() {
   }
 
   function handleColorChange(e) {
-    console.log(e);
+    setTaskColor(colors[e]);
   }
 
   function handleOnDragEnd(result) {
