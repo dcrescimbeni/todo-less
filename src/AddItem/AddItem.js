@@ -110,7 +110,7 @@ const ColorOrb = styled.div`
   width: 1rem;
   border-radius: 50%;
   background: #${(props) => props.color};
-  display: inline-block;
+  margin-right: 5px;
 `;
 
 const AddTaskButton = styled.input`
@@ -132,4 +132,5 @@ const DurationWrapper = styled.div`
 const ColorWrapper = styled.div`
   display: flex;
   margin-right: 16px;
+  align-items: center;
 `;
