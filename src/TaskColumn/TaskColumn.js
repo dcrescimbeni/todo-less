@@ -11,6 +11,8 @@ export default function TaskColumn({
   taskDuration,
   handleDurationChange,
   handleToggledTask,
+  taskColor,
+  handleColorChange,
   handleOnDragEnd,
 }) {
   return (
@@ -21,6 +23,8 @@ export default function TaskColumn({
         handleDescriptionChange={handleDescriptionChange}
         taskDuration={taskDuration}
         handleDurationChange={handleDurationChange}
+        taskColor={taskColor}
+        handleColorChange={handleColorChange}
       />
 
       <DragDropContext onDragEnd={handleOnDragEnd}>

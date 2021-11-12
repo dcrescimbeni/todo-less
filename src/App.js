@@ -79,6 +79,10 @@ function App() {
     setTodoList(newTodo);
   }
 
+  function handleColorChange(e) {
+    console.log(e);
+  }
+
   function handleOnDragEnd(result) {
     const newList = [...todoList];
     const [reorderedTask] = newList.splice(result.source.index, 1);
@@ -102,6 +106,8 @@ function App() {
         taskDuration={taskDuration}
         handleDurationChange={handleDurationChange}
         handleToggledTask={handleToggledTask}
+        taskColor={taskColor}
+        handleColorChange={handleColorChange}
         handleOnDragEnd={handleOnDragEnd}
       />
     </div>

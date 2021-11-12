@@ -17,6 +17,8 @@ export default function AddItem({
   handleDescriptionChange,
   taskDuration,
   handleDurationChange,
+  taskColor,
+  handleColorChange,
 }) {
   return (
     <MainWrapper>
@@ -43,16 +45,25 @@ export default function AddItem({
           />
           hour
         </DurationWrapper>
-        <ColorPickerList></ColorPickerList>
+        <ColorPickerList
+          taskColor={taskColor}
+          handleColorChange={handleColorChange}
+        ></ColorPickerList>
       </PickerWrapper>
       <AddTaskButton type="button" value="Add" onClick={handleAdd} />
     </MainWrapper>
   );
 }
 
-function ColorPickerList() {
+function ColorPickerList(taskColor, handleColorChange) {
   return (
-    <ListboxInput defaultValue="blue">
+    <ListboxInput
+      // value={taskColor}
+      defaultValue={taskColor}
+      onChange={(e) => handleColorChange(e)}
+    >
+      {console.log(taskColor)}
+      {console.log(handleColorChange)}
       <ColorWrapper>
         {/* TODO: change color dynamically */}
         <ColorBlob color="3B82F6"></ColorBlob>
