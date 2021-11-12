@@ -104,6 +104,7 @@ function App() {
         todoList={todoList}
         setTodoList={setTodoList}
         handleOnDragEnd={handleOnDragEnd}
+        taskColor={taskColor}
       />
       <TaskColumn
         todoList={todoList}

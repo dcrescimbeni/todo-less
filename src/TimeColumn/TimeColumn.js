@@ -1,10 +1,12 @@
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
-import HourTicks from '../HourTicks/HourTicks';
 
-export default function TimeColumn({ todoList, setTodoList, handleOnDragEnd }) {
-  // TODO: Fix column height
-
+export default function TimeColumn({
+  todoList,
+  setTodoList,
+  handleOnDragEnd,
+  taskColor,
+}) {
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <MainColumn className="timeColumn column">
@@ -29,7 +31,7 @@ export default function TimeColumn({ todoList, setTodoList, handleOnDragEnd }) {
                           ref={provided.innerRef}
                           size={element.duration}
                         >
-                          <ColorCode></ColorCode>
+                          <ColorCode color={element.color}></ColorCode>
                           <TaskDescriptionWrapper>
                             <ElementDescription>
                               {element.description}
@@ -80,7 +82,7 @@ const TaskElement = styled.li`
 const ColorCode = styled.div`
   height: 100%;
   width: 187px;
-  background: #339af0;
+  background: #${(props) => props.color};
   display: inline-block;
   border-radius: 5px 0px 0px 5px;
   width: 18px;
