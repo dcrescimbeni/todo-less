@@ -46,20 +46,27 @@ export default function TaskColumn({
                           ref={provided.innerRef}
                           status={element.completed}
                         >
-                          <CheckBox
-                            type="checkbox"
-                            name="completedStatus"
-                            id="completedStatus"
-                            color={element.color}
-                            checked={element.completed}
-                            onChange={(e) =>
-                              handleToggledTask(element.id, e.target.checked)
-                            }
-                          />
-                          <TaskDescription>
-                            {element.description}
-                          </TaskDescription>
-                          <TaskDuration>{element.duration} hour</TaskDuration>
+                          <TaskWrapper>
+                            <CheckBox
+                              type="checkbox"
+                              name="completedStatus"
+                              id="completedStatus"
+                              color={element.color}
+                              checked={element.completed}
+                              onChange={(e) =>
+                                handleToggledTask(element.id, e.target.checked)
+                              }
+                            />
+                            <TaskDescription>
+                              {element.description}
+                            </TaskDescription>
+                            <TaskDuration>{element.duration} hour</TaskDuration>
+                          </TaskWrapper>
+
+                          <TaskModifyWrapper>
+                            <input type="button" value="edit" />
+                            <input type="button" value="delete" />
+                          </TaskModifyWrapper>
                         </TaskElement>
                       )}
                     </Draggable>
@@ -79,17 +86,21 @@ const ListWrapper = styled.ul`
   list-style: none;
   padding: 0px;
   margin: 0px 40px;
-  /* border: 1px solid red; */
 `;
 
 const TaskElement = styled.li`
+  border-bottom: 1px solid #dee2e6;
+`;
+
+const TaskWrapper = styled.div`
   margin: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #dee2e6;
   opacity: ${(props) => (props.status ? 0.3 : 1)};
 `;
+
+const TaskModifyWrapper = styled.div``;
 
 const CheckBox = styled.input`
   appearance: none;

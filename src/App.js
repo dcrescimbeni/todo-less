@@ -85,6 +85,8 @@ function App() {
     setTaskDuration(1);
   }
 
+  function handleEdit() {}
+
   function handleDescriptionChange(e) {
     setTaskDescription(e.target.value);
   }
