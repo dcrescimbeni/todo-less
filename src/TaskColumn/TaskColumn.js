@@ -44,6 +44,7 @@ export default function TaskColumn({
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
                           ref={provided.innerRef}
+                          status={element.completed}
                         >
                           <CheckBox
                             type="checkbox"
@@ -87,18 +88,17 @@ const TaskElement = styled.li`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #dee2e6;
+  opacity: ${(props) => (props.status ? 1 : 0.3)};
 `;
 
 const CheckBox = styled.input`
   appearance: none;
   border: 0.15rem solid #${(props) => props.color};
   border-radius: 50%;
-  transform: translateY(0.3rem);
   height: 20px;
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: 20px;
-  margin-top: -4px;
 `;
 
 const TaskDescription = styled.p`
