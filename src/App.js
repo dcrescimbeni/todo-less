@@ -59,6 +59,12 @@ function App() {
   const [taskCompleted, setTaskCompleted] = useState(false);
   const [taskColor, setTaskColor] = useState(colors.blue);
 
+  // Utility functions
+  function updateLocalStorage(newItems) {
+    setTodoList(newItems);
+    localStorage.setItem('todolist', JSON.stringify(newItems));
+  }
+
   // Handles
   function handleAdd() {
     let nextId = taskId + 1;
@@ -74,8 +80,7 @@ function App() {
         color: taskColor,
       },
     ];
-    setTodoList(tasks);
-    localStorage.setItem('todolist', JSON.stringify(tasks));
+    updateLocalStorage(tasks);
     setTaskDescription('');
     setTaskDuration(1);
   }
@@ -104,8 +109,7 @@ function App() {
     const [reorderedTask] = newList.splice(result.source.index, 1);
     newList.splice(result.destination.index, 0, reorderedTask);
 
-    setTodoList(newList);
-    localStorage.setItem('todolist', JSON.stringify(newList));
+    updateLocalStorage(newList);
   }
 
   return (
