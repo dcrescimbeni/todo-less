@@ -15,7 +15,7 @@ export default function TaskColumn({
   taskColor,
   handleColorChange,
   handleOnDragEnd,
-  handleEditDescription,
+  handleEdit,
 }) {
   return (
     <div className="taskColumn column">
@@ -51,7 +51,7 @@ export default function TaskColumn({
                           <TaskContent
                             element={element}
                             handleToggledTask={handleToggledTask}
-                            handleEditDescription={handleEditDescription}
+                            handleEdit={handleEdit}
                           ></TaskContent>
                         </TaskElement>
                       )}

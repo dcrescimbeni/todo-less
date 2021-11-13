@@ -85,7 +85,7 @@ function App() {
     setTaskDuration(1);
   }
 
-  function handleEditDescription(id, newDescription) {
+  function handleEdit(id, newDescription, newDuration) {
     let current = [...todoList];
     console.log(id);
 
@@ -94,7 +94,7 @@ function App() {
         return {
           id: element.id,
           description: newDescription,
-          duration: element.duration,
+          duration: newDuration,
           completed: element.completed,
           color: element.color,
         };
@@ -153,7 +153,7 @@ function App() {
         taskColor={taskColor}
         handleColorChange={handleColorChange}
         handleOnDragEnd={handleOnDragEnd}
-        handleEditDescription={handleEditDescription}
+        handleEdit={handleEdit}
       />
     </div>
   );

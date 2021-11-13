@@ -2,10 +2,13 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import EditPrompt from '../EditPrompt/EditPrompt';
 
+// TODO: edit all the fields
+// TODO: style components
+
 export default function TaskContent({
   element,
   handleToggledTask,
-  handleEditDescription,
+  handleEdit,
 }) {
   const [editVisible, setEditVisible] = useState(false);
 
@@ -15,38 +18,33 @@ export default function TaskContent({
   return (
     <>
       <TaskWrapper>
-        <CheckBox
-          type="checkbox"
-          name="completedStatus"
-          id="completedStatus"
-          color={element.color}
-          checked={element.completed}
-          onChange={(e) => handleToggledTask(element.id, e.target.checked)}
-        />
-        <TaskDescription onClick={toggleEdit} visible={!editVisible}>
-          {element.description}
-        </TaskDescription>
+        <InformationWrapper visible={!editVisible}>
+          <CheckBox
+            type="checkbox"
+            name="completedStatus"
+            id="completedStatus"
+            color={element.color}
+            checked={element.completed}
+            onChange={(e) => handleToggledTask(element.id, e.target.checked)}
+          />
+          <TaskDescription onClick={toggleEdit}>
+            {element.description}
+          </TaskDescription>
+          <TaskDuration>{element.duration} hour</TaskDuration>
+        </InformationWrapper>
         <EditPrompt
           key={element.id}
           element={element}
-          handleEditDescription={handleEditDescription}
+          handleEdit={handleEdit}
           visible={editVisible}
           toggleEdit={toggleEdit}
         ></EditPrompt>
-
-        <TaskDuration>{element.duration} hour</TaskDuration>
       </TaskWrapper>
     </>
   );
 }
 
-const TaskWrapper = styled.div`
-  margin: 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  opacity: ${(props) => (props.status ? 0.3 : 1)};
-`;
+const TaskWrapper = styled.div``;
 
 const CheckBox = styled.input`
   appearance: none;
@@ -62,11 +60,19 @@ const TaskDescription = styled.p`
   flex-grow: 1;
   margin-left: 20px;
   margin-right: 20px;
-  ${(props) => (props.visible ? '' : 'display: none;')}
 `;
 
 const TaskDuration = styled.p`
   flex-shrink: 0;
   font-size: 12px;
   color: #adb5bd;
+`;
+
+const InformationWrapper = styled.div`
+  margin: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: ${(props) => (props.status ? 0.3 : 1)};
+  ${(props) => (props.visible ? '' : 'display: none;')}
 `;

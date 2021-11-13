@@ -1,27 +1,35 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
+//TODO: Add edit color
+
 export default function EditPrompt({
   element,
-  handleEditDescription,
+  handleEdit,
   visible,
   toggleEdit,
 }) {
   const [newDescription, setNewDescription] = useState(element.description);
+  const [newDuration, setNewDuration] = useState(element.duration);
 
   function handleSaveEdit() {
-    handleEditDescription(element.id, newDescription);
+    handleEdit(element.id, newDescription, newDuration);
     toggleEdit();
   }
 
   return (
     <Wrapper visible={visible}>
-      <EditInput
+      <DescriptionInput
         key={element.id}
         type="text"
         value={newDescription}
         onChange={(e) => setNewDescription(e.target.value)}
-      ></EditInput>
+      ></DescriptionInput>
+      <HourInput
+        type="text"
+        value={newDuration}
+        onChange={(e) => setNewDuration(e.target.value)}
+      ></HourInput>
       <SaveButton
         type="button"
         value="save"
@@ -35,6 +43,8 @@ const Wrapper = styled.div`
   ${(props) => (props.visible ? '' : 'display: none;')}
 `;
 
-const EditInput = styled.input``;
+const DescriptionInput = styled.input``;
 
 const SaveButton = styled.input``;
+
+const HourInput = styled.input``;
