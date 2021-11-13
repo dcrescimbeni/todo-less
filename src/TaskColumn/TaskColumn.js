@@ -88,7 +88,7 @@ const TaskElement = styled.li`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #dee2e6;
-  opacity: ${(props) => (props.status ? 1 : 0.3)};
+  opacity: ${(props) => (props.status ? 0.3 : 1)};
 `;
 
 const CheckBox = styled.input`

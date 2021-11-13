@@ -3,36 +3,44 @@ import TaskColumn from './TaskColumn/TaskColumn';
 import TimeColumn from './TimeColumn/TimeColumn';
 import { useState } from 'react';
 
-let items = [
-  {
-    id: 1,
-    description: 'Design app prototype in Figma',
-    duration: 2,
-    completed: false,
-    color: 'EF4444',
-  },
-  {
-    id: 2,
-    description: 'Start React project',
-    duration: 1,
-    completed: true,
-    color: 'F59E0B',
-  },
-  {
-    id: 3,
-    description: 'Implement first working prototype and push to Github',
-    duration: 4,
-    completed: false,
-    color: '3B82F6',
-  },
-  {
-    id: 4,
-    description: 'Celebrate with beer',
-    duration: 1,
-    completed: true,
-    color: '10B981',
-  },
-];
+// let items = [
+//   {
+//     id: 1,
+//     description: 'Design app prototype in Figma',
+//     duration: 2,
+//     completed: false,
+//     color: 'EF4444',
+//   },
+//   {
+//     id: 2,
+//     description: 'Start React project',
+//     duration: 1,
+//     completed: true,
+//     color: 'F59E0B',
+//   },
+//   {
+//     id: 3,
+//     description: 'Implement first working prototype and push to Github',
+//     duration: 4,
+//     completed: false,
+//     color: '3B82F6',
+//   },
+//   {
+//     id: 4,
+//     description: 'Celebrate with beer',
+//     duration: 1,
+//     completed: true,
+//     color: '10B981',
+//   },
+// ];
+
+// In case there are no items in localStorage (new user)
+// create an empty key
+if (!localStorage.getItem('todolist')) {
+  localStorage.setItem('todolist', []);
+}
+
+let items = JSON.parse(localStorage.getItem('todolist'));
 
 let colors = {
   red: 'EF4444',
@@ -67,6 +75,7 @@ function App() {
       },
     ];
     setTodoList(tasks);
+    localStorage.setItem('todolist', JSON.stringify(tasks));
     setTaskDescription('');
     setTaskDuration(1);
   }
@@ -96,6 +105,7 @@ function App() {
     newList.splice(result.destination.index, 0, reorderedTask);
 
     setTodoList(newList);
+    localStorage.setItem('todolist', JSON.stringify(newList));
   }
 
   return (
