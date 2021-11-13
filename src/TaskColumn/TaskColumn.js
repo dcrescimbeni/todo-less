@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 
 import AddItem from '../AddItem/AddItem';
+import TaskContent from '../TaskContent/TaxContent';
 
 export default function TaskColumn({
   todoList,
@@ -14,6 +16,7 @@ export default function TaskColumn({
   taskColor,
   handleColorChange,
   handleOnDragEnd,
+  handleEditDescription,
 }) {
   return (
     <div className="taskColumn column">
@@ -46,27 +49,11 @@ export default function TaskColumn({
                           ref={provided.innerRef}
                           status={element.completed}
                         >
-                          <TaskWrapper>
-                            <CheckBox
-                              type="checkbox"
-                              name="completedStatus"
-                              id="completedStatus"
-                              color={element.color}
-                              checked={element.completed}
-                              onChange={(e) =>
-                                handleToggledTask(element.id, e.target.checked)
-                              }
-                            />
-                            <TaskDescription>
-                              {element.description}
-                            </TaskDescription>
-                            <TaskDuration>{element.duration} hour</TaskDuration>
-                          </TaskWrapper>
-
-                          <TaskModifyWrapper>
-                            <input type="button" value="edit" />
-                            <input type="button" value="delete" />
-                          </TaskModifyWrapper>
+                          <TaskContent
+                            element={element}
+                            handleToggledTask={handleToggledTask}
+                            handleEditDescription={handleEditDescription}
+                          ></TaskContent>
                         </TaskElement>
                       )}
                     </Draggable>
@@ -90,36 +77,4 @@ const ListWrapper = styled.ul`
 
 const TaskElement = styled.li`
   border-bottom: 1px solid #dee2e6;
-`;
-
-const TaskWrapper = styled.div`
-  margin: 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  opacity: ${(props) => (props.status ? 0.3 : 1)};
-`;
-
-const TaskModifyWrapper = styled.div``;
-
-const CheckBox = styled.input`
-  appearance: none;
-  border: 0.15rem solid #${(props) => props.color};
-  border-radius: 50%;
-  height: 20px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 20px;
-`;
-
-const TaskDescription = styled.p`
-  flex-grow: 1;
-  margin-left: 20px;
-  margin-right: 20px;
-`;
-
-const TaskDuration = styled.p`
-  flex-shrink: 0;
-  font-size: 12px;
-  color: #adb5bd;
 `;

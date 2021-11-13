@@ -85,7 +85,27 @@ function App() {
     setTaskDuration(1);
   }
 
-  function handleEdit() {}
+  function handleEditDescription(id, newDescription) {
+    let current = [...todoList];
+    console.log(id);
+
+    let nextTasks = current.map((element) => {
+      if (element.id === id) {
+        return {
+          id: element.id,
+          description: newDescription,
+          duration: element.duration,
+          completed: element.completed,
+          color: element.color,
+        };
+      } else {
+        return element;
+      }
+    });
+
+    console.log(nextTasks);
+    updateLocalStorage(nextTasks);
+  }
 
   function handleDescriptionChange(e) {
     setTaskDescription(e.target.value);
@@ -133,6 +153,7 @@ function App() {
         taskColor={taskColor}
         handleColorChange={handleColorChange}
         handleOnDragEnd={handleOnDragEnd}
+        handleEditDescription={handleEditDescription}
       />
     </div>
   );
