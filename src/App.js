@@ -2,6 +2,7 @@ import './App.css';
 import TaskColumn from './TaskColumn/TaskColumn';
 import TimeColumn from './TimeColumn/TimeColumn';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 // let items = [
 //   {
@@ -14,7 +15,7 @@ import { useState } from 'react';
 //   {
 //     id: 2,
 //     description: 'Start React project',
-//     duration: 1,
+//     duration: 1,z
 //     completed: true,
 //     color: 'F59E0B',
 //   },
@@ -53,7 +54,7 @@ function App() {
   const [todoList, setTodoList] = useState(items);
 
   // Task related states
-  const [taskId, setTaskId] = useState(6);
+  const [taskId, setTaskId] = useState();
   const [taskDescription, setTaskDescription] = useState('');
   const [taskDuration, setTaskDuration] = useState(1);
   const [taskCompleted, setTaskCompleted] = useState(false);
@@ -66,18 +67,17 @@ function App() {
   }
 
   // Handles
-  function handleAdd() {
-    let nextId = taskId + 1;
-    setTaskId(nextId);
+  function handleAdd(description, duration, completed, color) {
+    let uniqueId = uuidv4();
 
     const tasks = [
       ...todoList,
       {
-        id: taskId,
-        description: taskDescription,
-        duration: taskDuration,
-        completed: false,
-        color: taskColor,
+        id: uniqueId,
+        description: description,
+        duration: duration,
+        completed: completed,
+        color: color,
       },
     ];
     updateLocalStorage(tasks);

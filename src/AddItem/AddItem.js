@@ -1,18 +1,23 @@
+import { useState } from 'react';
 import { Listbox, ListboxOption } from '@reach/listbox';
 import '@reach/listbox/styles.css';
 import './AddItem.css';
 
 import styled from 'styled-components';
 
-export default function AddItem({
-  handleAdd,
-  taskDescription,
-  handleDescriptionChange,
-  taskDuration,
-  handleDurationChange,
-  taskColor,
-  handleColorChange,
-}) {
+export default function AddItem({ handleAdd, element }) {
+  const [taskDescription, setTaskDescription] = useState('');
+  const [taskDuration, setTaskDuration] = useState(1);
+  const [taskCompleted, setTaskCompleted] = useState(false);
+  const [taskColor, setTaskColor] = useState('3B82F6');
+
+  if (element) {
+    setTaskDescription(element.description);
+    setTaskDuration(element.duration);
+    setTaskCompleted(element.completed);
+    setTaskColor(element.color);
+  }
+
   return (
     <MainWrapper>
       <DescriptionHelper>Add task</DescriptionHelper>
@@ -22,7 +27,7 @@ export default function AddItem({
         name="itemDescription"
         id="itemDescription"
         placeholder="Description"
-        onChange={handleDescriptionChange}
+        onChange={(e) => setTaskDescription(e.target.value)}
         autoComplete="off"
       />
       <PickerWrapper>
@@ -32,8 +37,7 @@ export default function AddItem({
             value={taskDuration}
             name="itemDuration"
             id="itemDuration"
-            placeholder="Duration"
-            onChange={handleDurationChange}
+            onChange={(e) => setTaskDuration(e.target.value)}
             autoComplete="off"
           />
           hour
@@ -43,17 +47,26 @@ export default function AddItem({
           <ColorOrb color={taskColor}></ColorOrb>
           <Listbox
             onChange={(e) => {
-              handleColorChange(e);
+              setTaskColor(e);
             }}
           >
-            <ListboxOption value="blue">Blue</ListboxOption>
-            <ListboxOption value="red">Red</ListboxOption>
-            <ListboxOption value="green">Green</ListboxOption>
-            <ListboxOption value="yellow">Yellow</ListboxOption>
+            <ListboxOption value="3B82F6">Blue</ListboxOption>
+            <ListboxOption value="EF4444">Red</ListboxOption>
+            <ListboxOption value="10B981">Green</ListboxOption>
+            <ListboxOption value="F59E0B">Yellow</ListboxOption>
           </Listbox>
         </ColorWrapper>
       </PickerWrapper>
-      <AddTaskButton type="button" value="Add" onClick={handleAdd} />
+      <AddTaskButton
+        type="button"
+        value="Add"
+        onClick={(e) => {
+          handleAdd(taskDescription, taskDuration, taskCompleted, taskColor);
+          setTaskDescription('');
+          setTaskDuration(1);
+          setTaskCompleted(false);
+        }}
+      />
     </MainWrapper>
   );
 }
