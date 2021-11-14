@@ -2,7 +2,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 
 import AddItem from '../AddItem/AddItem';
-import TaskContent from '../TaskContent/TaxContent';
+import TaskContent from '../TaskContent/TaskContent';
 
 export default function TaskColumn({
   todoList,
