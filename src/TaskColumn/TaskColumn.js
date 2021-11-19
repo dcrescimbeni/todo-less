@@ -2,32 +2,18 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 
 import AddItem from '../AddItem/AddItem';
-import TaskContent from '../TaskContent/TaskContent';
+import TaskBlock from '../TaskBlock/TaskBlock';
 
 export default function TaskColumn({
   todoList,
   handleAdd,
-  taskDescription,
-  handleDescriptionChange,
-  taskDuration,
-  handleDurationChange,
   handleToggledTask,
-  taskColor,
-  handleColorChange,
   handleOnDragEnd,
   handleEdit,
 }) {
   return (
     <div className="taskColumn column">
-      <AddItem
-        handleAdd={handleAdd}
-        taskDescription={taskDescription}
-        handleDescriptionChange={handleDescriptionChange}
-        taskDuration={taskDuration}
-        handleDurationChange={handleDurationChange}
-        taskColor={taskColor}
-        handleColorChange={handleColorChange}
-      />
+      <AddItem handleAdd={handleAdd} />
 
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div>
@@ -48,11 +34,11 @@ export default function TaskColumn({
                           ref={provided.innerRef}
                           status={element.completed}
                         >
-                          <TaskContent
+                          <TaskBlock
                             element={element}
                             handleToggledTask={handleToggledTask}
                             handleEdit={handleEdit}
-                          ></TaskContent>
+                          ></TaskBlock>
                         </TaskElement>
                       )}
                     </Draggable>

@@ -1,15 +1,12 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import EditPrompt from '../EditPrompt/EditPrompt';
+import AddItem from '../AddItem/AddItem';
 
 // TODO: edit all the fields
 // TODO: style components
 
-export default function TaskContent({
-  element,
-  handleToggledTask,
-  handleEdit,
-}) {
+export default function TaskBlock({ element, handleToggledTask, handleEdit }) {
   const [editVisible, setEditVisible] = useState(false);
 
   function toggleEdit() {
@@ -38,13 +35,17 @@ export default function TaskContent({
           handleEdit={handleEdit}
           visible={editVisible}
           toggleEdit={toggleEdit}
-        ></EditPrompt>
+        >
+          <AddItem></AddItem>
+        </EditPrompt>
       </TaskWrapper>
     </>
   );
 }
 
-const TaskWrapper = styled.div``;
+const TaskWrapper = styled.div`
+  height: 60px;
+`;
 
 const CheckBox = styled.input`
   appearance: none;
