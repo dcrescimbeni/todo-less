@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import EditPrompt from '../EditPrompt/EditPrompt';
 import AddItem from '../AddItem/AddItem';
+import TaskInformation from '../TaskInformation/TaskInformation';
 
 // TODO: edit all the fields
 // TODO: style components
@@ -15,29 +16,21 @@ export default function TaskBlock({ element, handleToggledTask, handleEdit }) {
   return (
     <>
       <TaskWrapper>
-        <InformationWrapper visible={!editVisible}>
-          <CheckBox
-            type="checkbox"
-            name="completedStatus"
-            id="completedStatus"
-            color={element.color}
-            checked={element.completed}
-            onChange={(e) => handleToggledTask(element.id, e.target.checked)}
-          />
-          <TaskDescription onClick={toggleEdit}>
-            {element.description}
-          </TaskDescription>
-          <TaskDuration>{element.duration} hour</TaskDuration>
+        <InformationWrapper visible={!editVisible} onClick={toggleEdit}>
+          <TaskInformation
+            element={element}
+            handleToggledTask={handleToggledTask}
+          ></TaskInformation>
         </InformationWrapper>
-        <EditPrompt
-          key={element.id}
-          element={element}
-          handleEdit={handleEdit}
-          visible={editVisible}
-          toggleEdit={toggleEdit}
-        >
-          <AddItem></AddItem>
-        </EditPrompt>
+        <EditWrapper>
+          <EditPrompt
+            key={element.id}
+            element={element}
+            handleEdit={handleEdit}
+            visible={editVisible}
+            toggleEdit={toggleEdit}
+          ></EditPrompt>
+        </EditWrapper>
       </TaskWrapper>
     </>
   );
@@ -45,35 +38,14 @@ export default function TaskBlock({ element, handleToggledTask, handleEdit }) {
 
 const TaskWrapper = styled.div`
   height: 60px;
-`;
-
-const CheckBox = styled.input`
-  appearance: none;
-  border: 0.15rem solid #${(props) => props.color};
-  border-radius: 50%;
-  height: 20px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 20px;
-`;
-
-const TaskDescription = styled.p`
-  flex-grow: 1;
-  margin-left: 20px;
-  margin-right: 20px;
-`;
-
-const TaskDuration = styled.p`
-  flex-shrink: 0;
-  font-size: 12px;
-  color: #adb5bd;
+  display: flex;
+  align-items: center;
 `;
 
 const InformationWrapper = styled.div`
-  margin: 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
   opacity: ${(props) => (props.status ? 0.3 : 1)};
   ${(props) => (props.visible ? '' : 'display: none;')}
 `;
+
+const EditWrapper = styled.div``;
