@@ -11,7 +11,6 @@ export default function EditPrompt({
 }) {
   const [newDescription, setNewDescription] = useState(element.description);
   const [newDuration, setNewDuration] = useState(element.duration);
-  const [newColor, setNewColor] = useState(element.color);
 
   function handleSaveEdit() {
     handleEdit(element.id, newDescription, newDuration);
