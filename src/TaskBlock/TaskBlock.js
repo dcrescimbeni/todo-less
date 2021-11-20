@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import EditPrompt from '../EditPrompt/EditPrompt';
-import AddItem from '../AddItem/AddItem';
 import TaskInformation from '../TaskInformation/TaskInformation';
 
 // TODO: edit all the fields
@@ -16,13 +15,17 @@ export default function TaskBlock({ element, handleToggledTask, handleEdit }) {
   return (
     <>
       <TaskWrapper>
-        <InformationWrapper visible={!editVisible} onClick={toggleEdit}>
+        <InformationWrapper
+          visible={!editVisible}
+          onDoubleClick={toggleEdit}
+          status={element.completed}
+        >
           <TaskInformation
             element={element}
             handleToggledTask={handleToggledTask}
           ></TaskInformation>
         </InformationWrapper>
-        <EditWrapper>
+        <EditWrapper visible={editVisible}>
           <EditPrompt
             key={element.id}
             element={element}
@@ -48,4 +51,7 @@ const InformationWrapper = styled.div`
   ${(props) => (props.visible ? '' : 'display: none;')}
 `;
 
-const EditWrapper = styled.div``;
+const EditWrapper = styled.div`
+  width: 100%;
+  ${(props) => (props.visible ? '' : 'display: none;')}
+`;
