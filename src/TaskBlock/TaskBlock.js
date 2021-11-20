@@ -40,12 +40,12 @@ export default function TaskBlock({ element, handleToggledTask, handleEdit }) {
 }
 
 const TaskWrapper = styled.div`
-  height: 60px;
   display: flex;
   align-items: center;
 `;
 
 const InformationWrapper = styled.div`
+  height: 60px;
   width: 100%;
   opacity: ${(props) => (props.status ? 0.3 : 1)};
   ${(props) => (props.visible ? '' : 'display: none;')}
