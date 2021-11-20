@@ -87,7 +87,6 @@ function App() {
 
   function handleEdit(id, newDescription, newDuration) {
     let current = [...todoList];
-    console.log(id);
 
     let nextTasks = current.map((element) => {
       if (element.id === id) {
@@ -105,6 +104,23 @@ function App() {
 
     console.log(nextTasks);
     updateLocalStorage(nextTasks);
+  }
+
+  function handleDelete(taskId) {
+    let current = [...todoList];
+    console.log(taskId);
+
+    let nextTasks = current.filter((element) => {
+      if (element.id !== taskId) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    updateLocalStorage(nextTasks);
+
+    console.log('test delete');
   }
 
   function handleDescriptionChange(e) {
@@ -154,6 +170,7 @@ function App() {
         handleColorChange={handleColorChange}
         handleOnDragEnd={handleOnDragEnd}
         handleEdit={handleEdit}
+        handleDelete={handleDelete}
       />
     </div>
   );

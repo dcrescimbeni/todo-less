@@ -3,7 +3,12 @@ import styled from 'styled-components';
 
 //TODO: Can't make listbox to work inside Edit component...
 
-export default function EditPrompt({ element, handleEdit, toggleEdit }) {
+export default function EditPrompt({
+  element,
+  handleEdit,
+  toggleEdit,
+  handleDelete,
+}) {
   const [newDescription, setNewDescription] = useState(element.description);
   const [newDuration, setNewDuration] = useState(element.duration);
 
@@ -29,11 +34,20 @@ export default function EditPrompt({ element, handleEdit, toggleEdit }) {
         <HourIndicator> hours</HourIndicator>
       </InformationWrapper>
 
-      <SaveButton
-        type="button"
-        value="Save"
-        onClick={handleSaveEdit}
-      ></SaveButton>
+      <ButtonWrapper>
+        <SaveButton
+          type="button"
+          value="Save"
+          onClick={handleSaveEdit}
+        ></SaveButton>
+        <DeleteButton
+          type="button"
+          value="Delete"
+          onClick={(e) => {
+            handleDelete(element.id);
+          }}
+        ></DeleteButton>
+      </ButtonWrapper>
     </Wrapper>
   );
 }
@@ -57,17 +71,6 @@ const DescriptionInput = styled.input`
   padding: 5px;
 `;
 
-const SaveButton = styled.input`
-  background: #3b82f6;
-  color: white;
-  font-weight: bold;
-  color: white;
-  padding: 10px;
-  margin-top: 10px;
-  border: 0px;
-  border-radius: 5px;
-`;
-
 const HourInput = styled.input`
   width: 2rem;
   margin: 0px 5px;
@@ -79,4 +82,33 @@ const HourIndicator = styled.div`
   font-size: 12px;
   color: #adb5bd;
   margin: 0px 5px;
+`;
+
+const SaveButton = styled.input`
+  background: #3b82f6;
+  color: white;
+  font-weight: bold;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: 0px;
+  border-radius: 5px;
+  flex-grow: 9;
+`;
+
+const DeleteButton = styled.input`
+  background: #ef4444;
+  color: white;
+  font-weight: bold;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border: 0px;
+  border-radius: 5px;
+  flex-grow: 1;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
 `;

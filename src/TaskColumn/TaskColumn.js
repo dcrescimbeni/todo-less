@@ -10,6 +10,7 @@ export default function TaskColumn({
   handleToggledTask,
   handleOnDragEnd,
   handleEdit,
+  handleDelete,
 }) {
   return (
     <div className="taskColumn column">
@@ -38,6 +39,7 @@ export default function TaskColumn({
                             element={element}
                             handleToggledTask={handleToggledTask}
                             handleEdit={handleEdit}
+                            handleDelete={handleDelete}
                           ></TaskBlock>
                         </TaskElement>
                       )}

@@ -6,7 +6,12 @@ import TaskInformation from '../TaskInformation/TaskInformation';
 // TODO: edit all the fields
 // TODO: style components
 
-export default function TaskBlock({ element, handleToggledTask, handleEdit }) {
+export default function TaskBlock({
+  element,
+  handleToggledTask,
+  handleEdit,
+  handleDelete,
+}) {
   const [editVisible, setEditVisible] = useState(false);
 
   function toggleEdit() {
@@ -32,6 +37,7 @@ export default function TaskBlock({ element, handleToggledTask, handleEdit }) {
             handleEdit={handleEdit}
             visible={editVisible}
             toggleEdit={toggleEdit}
+            handleDelete={handleDelete}
           ></EditPrompt>
         </EditWrapper>
       </TaskWrapper>
