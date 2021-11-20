@@ -1,5 +1,6 @@
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
+import HourTickElement from '../HourTickElement/HourTickElement';
 
 export default function TimeColumn({
   todoList,
@@ -51,6 +52,18 @@ export default function TimeColumn({
             )}
           </Droppable>
         </TimeBlockWrapper>
+        <HourTicksWrapper>
+          <HourTickElement></HourTickElement>
+          <HourTickElement></HourTickElement>
+          <HourTickElement></HourTickElement>
+          <HourTickElement></HourTickElement>
+          <HourTickElement></HourTickElement>
+          <HourTickElement></HourTickElement>
+          <HourTickElement></HourTickElement>
+          <HourTickElement></HourTickElement>
+          <HourTickElement></HourTickElement>
+          <HourTickElement></HourTickElement>
+        </HourTicksWrapper>
       </MainColumn>
       {/* <HourTicks></HourTicks> */}
     </DragDropContext>
@@ -59,26 +72,42 @@ export default function TimeColumn({
 
 // TODO: Implement hour markers
 
-const TimeBlockWrapper = styled.div``;
+// Column - General styling
+// ########################
+
+const MainColumn = styled.div`
+  padding: 30px;
+  position: relative;
+`;
+
+// Time blocks
+// ###########
+
+const TimeBlockWrapper = styled.div`
+  position: relative;
+  z-index: 2;
+`;
 
 const UnstyledList = styled.ul`
   list-style: none;
   padding: 0px;
-`;
-
-const MainColumn = styled.div`
-  padding: 30px;
+  margin: 0px;
 `;
 
 const TaskElement = styled.li`
-  height: ${(props) => props.size * 68 - 12 + props.size * 1 - 1}px;
-  margin: 11px 0px;
+  margin: 12px 0px;
+  height: ${(props) =>
+    props.size * 60 + (props.size - 1) * 10 + (props.size - 1) * 1 - 2}px;
   border: 1px solid #adb5bd;
   border-radius: 5px;
   display: flex;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   background-color: white;
   opacity: ${(props) => (props.status ? 0.3 : 1)};
+
+  &:first-of-type {
+    margin-top: 5px;
+  }
 `;
 
 const ColorCode = styled.div`
@@ -110,5 +139,17 @@ const ElementDuration = styled.p`
   color: #adb5bd;
   font-size: 14px;
 `;
+
+// Hour tickers
+// ############
+
+const HourTicksWrapper = styled.div`
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  margin-left: -25px;
+  border-top: 1px solid red;
+`;
+
 // Drag and drop explaination source:
 // https://www.freecodecamp.org/news/how-to-add-drag-and-drop-in-react-with-react-beautiful-dnd/
