@@ -1,14 +1,19 @@
+body {
+  background-color: #f8f9fa;
+}
+
 .App {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 0px 60px;
 }
 
 .column {
   background: #ffffff;
   margin: 30px;
   border-radius: 10px;
-  flex-basis: clamp(350px, 35vw, 550px);
+  flex-basis: clamp(350px, 35vw, 460px);
   display: flex;
   flex-direction: column;
 }

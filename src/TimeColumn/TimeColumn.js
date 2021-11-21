@@ -22,7 +22,7 @@ export default function TimeColumn({
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <MainColumn className="timeColumn column">
+      <MainColumn className="column">
         <TimeBlockWrapper>
           <Droppable droppableId="taskTimes">
             {(provided) => (
@@ -148,9 +148,9 @@ const ElementDuration = styled.p`
 const HourTicksWrapper = styled.div`
   position: absolute;
   z-index: 1;
-  width: 100%;
-  margin-left: -25px;
-  border-top: 1px solid red;
+  width: calc(100% + 45px);
+  margin-left: calc(-30px - 45px);
+  border-top: 1px solid #dee2e6;
 `;
 
 // Drag and drop explaination source:
