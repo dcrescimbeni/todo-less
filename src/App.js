@@ -161,8 +161,9 @@ function App() {
         handleOnDragEnd={handleOnDragEnd}
         taskColor={taskColor}
         timeStart={timeStart}
+        handleAdd={handleAdd}
       />
-      <TaskColumn
+      {/* <TaskColumn
         todoList={todoList}
         handleAdd={handleAdd}
         taskDescription={taskDescription}
@@ -175,7 +176,7 @@ function App() {
         handleOnDragEnd={handleOnDragEnd}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
-      />
+      /> */}
     </div>
   );
 }

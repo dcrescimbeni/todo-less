@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import HourTickElement from '../HourTickElement/HourTickElement';
+import AddButton from '../AddButton/AddButton';
+import AddItem from '../AddItem/AddItem';
 
 export default function TimeColumn({
   todoList,
@@ -8,7 +11,10 @@ export default function TimeColumn({
   handleOnDragEnd,
   taskColor,
   timeStart,
+  handleAdd,
 }) {
+  const [addButtonVisible, setAddButtonVisible] = useState(true);
+
   // Calculate hour tickers
   let hourTickers = [];
   let currentTime = timeStart;
@@ -69,12 +75,19 @@ export default function TimeColumn({
             return <HourTickElement time={element}></HourTickElement>;
           })}
         </HourTicksWrapper>
+        <AddItem
+          handleAdd={handleAdd}
+          visible={!addButtonVisible}
+          setAddButtonVisible={setAddButtonVisible}
+        ></AddItem>
+        <AddButton
+          visible={addButtonVisible}
+          setAddButtonVisible={setAddButtonVisible}
+        ></AddButton>
       </MainColumn>
     </DragDropContext>
   );
 }
-
-// TODO: Implement hour markers
 
 // Column - General styling
 // ########################

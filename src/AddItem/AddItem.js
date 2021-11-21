@@ -5,7 +5,12 @@ import './AddItem.css';
 
 import styled from 'styled-components';
 
-export default function AddItem({ handleAdd, element }) {
+export default function AddItem({
+  handleAdd,
+  element,
+  visible,
+  setAddButtonVisible,
+}) {
   const [taskDescription, setTaskDescription] = useState('');
   const [taskDuration, setTaskDuration] = useState(1);
   const [taskCompleted, setTaskCompleted] = useState(false);
@@ -19,7 +24,7 @@ export default function AddItem({ handleAdd, element }) {
   }
 
   return (
-    <MainWrapper>
+    <MainWrapper visible={visible}>
       <DescriptionHelper>Add task</DescriptionHelper>
       <DescriptionInput
         type="text"
@@ -67,12 +72,13 @@ export default function AddItem({ handleAdd, element }) {
           setTaskCompleted(false);
         }}
       />
+      <CancelButton type="button" value="Cancel" onClick={(e)=> setAddButtonVisible(visible)}></CancelButton>
     </MainWrapper>
   );
 }
 
 const MainWrapper = styled.div`
-  display: flex;
+  ${(props) => (props.visible ? 'display: flex' : 'display:none')};
   flex-direction: column;
   justify-content: center;
   margin: 20px;
@@ -129,6 +135,8 @@ const AddTaskButton = styled.input`
   border: 0px;
   border-radius: 5px;
 `;
+
+const CancelButton = styled.input``;
 
 const DurationWrapper = styled.div`
   display: flex;
