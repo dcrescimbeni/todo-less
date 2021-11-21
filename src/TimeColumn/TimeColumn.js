@@ -13,6 +13,9 @@ export default function TimeColumn({
   taskColor,
   timeStart,
   handleAdd,
+  handleToggledTask,
+  handleEdit,
+  handleDelete,
 }) {
   const [addButtonVisible, setAddButtonVisible] = useState(true);
 
@@ -52,7 +55,12 @@ export default function TimeColumn({
                           size={element.duration}
                           status={element.completed}
                         >
-                          <TaskCard element={element}></TaskCard>
+                          <TaskCard
+                            element={element}
+                            handleToggledTask={handleToggledTask}
+                            handleEdit={handleEdit}
+                            handleDelete={handleDelete}
+                          ></TaskCard>
                         </TaskElement>
                       )}
                     </Draggable>

@@ -162,6 +162,9 @@ function App() {
         taskColor={taskColor}
         timeStart={timeStart}
         handleAdd={handleAdd}
+        handleToggledTask={handleToggledTask}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
       />
       {/* <TaskColumn
         todoList={todoList}
