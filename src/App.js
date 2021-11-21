@@ -60,6 +60,9 @@ function App() {
   const [taskCompleted, setTaskCompleted] = useState(false);
   const [taskColor, setTaskColor] = useState(colors.blue);
 
+  // General configuration related states
+  const [timeStart, setTimeStart] = useState(9);
+
   // Utility functions
   function updateLocalStorage(newItems) {
     setTodoList(newItems);
@@ -157,6 +160,7 @@ function App() {
         setTodoList={setTodoList}
         handleOnDragEnd={handleOnDragEnd}
         taskColor={taskColor}
+        timeStart={timeStart}
       />
       <TaskColumn
         todoList={todoList}

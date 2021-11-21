@@ -7,7 +7,19 @@ export default function TimeColumn({
   setTodoList,
   handleOnDragEnd,
   taskColor,
+  timeStart,
 }) {
+  // Calculate hour tickers
+  let hourTickers = [];
+  let currentTime = timeStart;
+
+  todoList.forEach((element) => {
+    for (let i = 1; i <= parseInt(element.duration); i++) {
+      hourTickers.push(currentTime);
+      currentTime++;
+    }
+  });
+
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <MainColumn className="timeColumn column">
@@ -53,19 +65,11 @@ export default function TimeColumn({
           </Droppable>
         </TimeBlockWrapper>
         <HourTicksWrapper>
-          <HourTickElement></HourTickElement>
-          <HourTickElement></HourTickElement>
-          <HourTickElement></HourTickElement>
-          <HourTickElement></HourTickElement>
-          <HourTickElement></HourTickElement>
-          <HourTickElement></HourTickElement>
-          <HourTickElement></HourTickElement>
-          <HourTickElement></HourTickElement>
-          <HourTickElement></HourTickElement>
-          <HourTickElement></HourTickElement>
+          {hourTickers.map((element) => {
+            return <HourTickElement time={element}></HourTickElement>;
+          })}
         </HourTicksWrapper>
       </MainColumn>
-      {/* <HourTicks></HourTicks> */}
     </DragDropContext>
   );
 }
@@ -96,17 +100,15 @@ const UnstyledList = styled.ul`
 
 const TaskElement = styled.li`
   margin: 12px 0px;
-  height: ${(props) =>
-    props.size * 60 + (props.size - 1) * 10 + (props.size - 1) * 1 - 2}px;
+  height: ${(props) => props.size * 71 - 2 - 12}px;
   border: 1px solid #adb5bd;
   border-radius: 5px;
   display: flex;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   background-color: white;
   opacity: ${(props) => (props.status ? 0.3 : 1)};
 
   &:first-of-type {
-    margin-top: 5px;
+    margin-top: 6px;
   }
 `;
 

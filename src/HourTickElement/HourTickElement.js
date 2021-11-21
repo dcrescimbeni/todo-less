@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export default function HourTickElement() {
+export default function HourTickElement({ time }) {
   return (
     <>
-      <HourTickerMark>1 hour</HourTickerMark>
+      <HourTickerMark>{time}:00</HourTickerMark>
     </>
   );
 }
