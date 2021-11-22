@@ -11,10 +11,6 @@ export default function TaskCard({
   const [editVisible, setEditVisible] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
 
-  function toggleEdit() {
-    setEditVisible(!editVisible);
-  }
-
   return (
     <>
       <Wrapper
@@ -25,7 +21,7 @@ export default function TaskCard({
         <ColorCode color={element.color}></ColorCode>
         <ElementDescription>{element.description}</ElementDescription>
         <ElementDuration>{element.duration} hour</ElementDuration>
-        <OptionsButton optionsVisible={optionsVisible}></OptionsButton>
+        <OptionsButton></OptionsButton>
       </Wrapper>
     </>
   );
