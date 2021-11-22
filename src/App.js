@@ -134,6 +134,7 @@ function App() {
     setTaskDuration(e.target.value);
   }
 
+  // Handles opacity change for completed/pending tasks
   function handleToggledTask(taskId, completedStatus) {
     const newTodo = [...todoList];
     const targetTask = newTodo.find((element) => element.id === taskId);

@@ -118,6 +118,7 @@ const TaskElement = styled.li`
   border: 1px solid #adb5bd;
   border-radius: 5px;
   display: flex;
+  align-items: center;
   background-color: white;
   opacity: ${(props) => (props.status ? 0.3 : 1)};
 

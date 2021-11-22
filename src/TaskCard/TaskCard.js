@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import EditPrompt from '../EditPrompt/EditPrompt';
+import OptionsButton from '../OptionsButton/OptionsButton';
 
 export default function TaskCard({
   element,
@@ -9,6 +9,7 @@ export default function TaskCard({
   handleDelete,
 }) {
   const [editVisible, setEditVisible] = useState(false);
+  const [optionsVisible, setOptionsVisible] = useState(false);
 
   function toggleEdit() {
     setEditVisible(!editVisible);
@@ -16,48 +17,44 @@ export default function TaskCard({
 
   return (
     <>
-      <TaskInformationWrapper visible={!editVisible}>
+      <Wrapper
+        visible={!editVisible}
+        onMouseOver={(e) => setOptionsVisible(true)}
+        onMouseLeave={(e) => setOptionsVisible(false)}
+      >
         <ColorCode color={element.color}></ColorCode>
-        <TaskDescriptionWrapper onDoubleClick={toggleEdit}>
-          <ElementDescription>{element.description}</ElementDescription>
-          <ElementDuration>{element.duration} hour</ElementDuration>
-        </TaskDescriptionWrapper>
-      </TaskInformationWrapper>
-      <EditWrapper visible={editVisible}>
-        <EditPrompt
-          key={element.id}
-          element={element}
-          handleEdit={handleEdit}
-          visible={editVisible}
-          toggleEdit={toggleEdit}
-          handleDelete={handleDelete}
-        ></EditPrompt>
-      </EditWrapper>
+        <ElementDescription>{element.description}</ElementDescription>
+        <ElementDuration>{element.duration} hour</ElementDuration>
+        <OptionsButton optionsVisible={optionsVisible}></OptionsButton>
+      </Wrapper>
     </>
   );
 }
 
-const ColorCode = styled.div`
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+  width: 100%;
   height: 100%;
-  width: 187px;
-  background: #${(props) => props.color};
-  display: inline-block;
-  border-radius: 5px 0px 0px 5px;
-  width: 18px;
-  flex-shrink: 0;
 `;
 
-const TaskDescriptionWrapper = styled.div`
+const ColorCode = styled.div`
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  border: 3px solid #${(props) => props.color};
   display: inline-block;
-  padding: 10px;
-  color: #212529;
+  flex-shrink: 0;
+  margin-right: 10px;
 `;
 
 const ElementDescription = styled.p`
   margin: 0px;
   padding: 0px;
-  font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
+  margin-right: auto;
 `;
 
 const ElementDuration = styled.p`
@@ -65,13 +62,4 @@ const ElementDuration = styled.p`
   padding: 0px;
   color: #adb5bd;
   font-size: 14px;
-`;
-
-const EditWrapper = styled.div`
-  width: 100%;
-  ${(props) => (props.visible ? '' : 'display: none;')}
-`;
-
-const TaskInformationWrapper = styled.div`
-  ${(props) => (props.visible ? 'display: flex;' : 'display: none;')}
 `;
