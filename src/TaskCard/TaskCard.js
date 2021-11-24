@@ -21,7 +21,10 @@ export default function TaskCard({
         <ColorCode color={element.color}></ColorCode>
         <ElementDescription>{element.description}</ElementDescription>
         <ElementDuration>{element.duration} hour</ElementDuration>
-        <OptionsButton></OptionsButton>
+        <OptionsButton
+          element={element}
+          handleDelete={handleDelete}
+        ></OptionsButton>
       </Wrapper>
     </>
   );
