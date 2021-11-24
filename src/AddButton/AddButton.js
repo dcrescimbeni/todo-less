@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
-export default function AddButton({ visible, setAddButtonVisible }) {
+export default function AddButton({
+  visible,
+  setAddButtonVisible,
+  showDialog,
+  setShowDialog,
+}) {
   return (
     <Wrapper visible={visible}>
       <AddButtonFull
         type="button"
         value="Add"
-        onClick={(e) => setAddButtonVisible(!visible)}
+        onClick={(e) => setShowDialog(true)}
       ></AddButtonFull>
     </Wrapper>
   );

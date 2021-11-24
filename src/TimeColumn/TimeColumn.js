@@ -16,6 +16,8 @@ export default function TimeColumn({
   handleToggledTask,
   handleEdit,
   handleDelete,
+  showDialog,
+  setShowDialog,
 }) {
   const [addButtonVisible, setAddButtonVisible] = useState(true);
 
@@ -82,10 +84,14 @@ export default function TimeColumn({
           handleAdd={handleAdd}
           visible={!addButtonVisible}
           setAddButtonVisible={setAddButtonVisible}
+          showDialog={showDialog}
+          setShowDialog={setShowDialog}
         ></AddItem>
         <AddButton
           visible={addButtonVisible}
           setAddButtonVisible={setAddButtonVisible}
+          showDialog={showDialog}
+          setShowDialog={setShowDialog}
         ></AddButton>
       </MainColumn>
     </DragDropContext>
@@ -98,6 +104,7 @@ export default function TimeColumn({
 const MainColumn = styled.div`
   padding: 30px;
   position: relative;
+  isolation: isolate;
 `;
 
 // Time blocks

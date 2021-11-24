@@ -63,6 +63,9 @@ function App() {
   // General configuration related states
   const [timeStart, setTimeStart] = useState(9);
 
+  // Dialog function useState
+  const [showDialog, setShowDialog] = useState(false);
+
   // Utility functions
   function updateLocalStorage(newItems) {
     setTodoList(newItems);
@@ -166,6 +169,8 @@ function App() {
         handleToggledTask={handleToggledTask}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
+        showDialog={showDialog}
+        setShowDialog={setShowDialog}
       />
       {/* <TaskColumn
         todoList={todoList}

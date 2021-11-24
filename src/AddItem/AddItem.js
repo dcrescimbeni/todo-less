@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Listbox, ListboxOption } from '@reach/listbox';
 import '@reach/listbox/styles.css';
+import { Dialog, DialogOverlay, DialogContent } from '@reach/dialog';
+import '@reach/dialog/styles.css';
 import './AddItem.css';
 
 import styled from 'styled-components';
@@ -10,75 +12,100 @@ export default function AddItem({
   element,
   visible,
   setAddButtonVisible,
+  showDialog,
+  setShowDialog,
 }) {
+  // Task-related useState
   const [taskDescription, setTaskDescription] = useState('');
   const [taskDuration, setTaskDuration] = useState(1);
   const [taskCompleted, setTaskCompleted] = useState(false);
   const [taskColor, setTaskColor] = useState('3B82F6');
 
+  // Dialog config
+  const inputRef = useRef();
+
+  let optionEditAdd = 'Add';
   if (element) {
     setTaskDescription(element.description);
     setTaskDuration(element.duration);
     setTaskCompleted(element.completed);
     setTaskColor(element.color);
+
+    // Button changes content depending of add or edit
+    optionEditAdd = 'Edit';
   }
 
   return (
-    <MainWrapper visible={visible}>
-      <DescriptionHelper>Add task</DescriptionHelper>
-      <DescriptionInput
-        type="text"
-        value={taskDescription}
-        name="itemDescription"
-        id="itemDescription"
-        placeholder="Description"
-        onChange={(e) => setTaskDescription(e.target.value)}
-        autoComplete="off"
-      />
-      <PickerWrapper>
-        <DurationWrapper>
-          <DurationInput
-            type="text"
-            value={taskDuration}
-            name="itemDuration"
-            id="itemDuration"
-            onChange={(e) => setTaskDuration(e.target.value)}
-            autoComplete="off"
-          />
-          hour
-        </DurationWrapper>
+    <Dialog
+      isOpen={showDialog}
+      onDismiss={(e) => setShowDialog(false)}
+      aria-label="Add or edit task"
+      initialFocusRef={inputRef}
+    >
+      <button className="close-button" onClick={(e) => setShowDialog(false)}>
+        <span aria-hidden>x</span>
+      </button>
+      <MainWrapper>
+        <DescriptionHelper>{optionEditAdd} task</DescriptionHelper>
+        <DescriptionInput
+          type="text"
+          value={taskDescription}
+          name="itemDescription"
+          id="itemDescription"
+          placeholder="Description"
+          onChange={(e) => setTaskDescription(e.target.value)}
+          autoComplete="off"
+          ref={inputRef}
+        />
+        <PickerWrapper>
+          <DurationWrapper>
+            <DurationInput
+              type="text"
+              value={taskDuration}
+              name="itemDuration"
+              id="itemDuration"
+              onChange={(e) => setTaskDuration(e.target.value)}
+              autoComplete="off"
+            />
+            hour
+          </DurationWrapper>
 
-        <ColorWrapper>
-          <ColorOrb color={taskColor}></ColorOrb>
-          <Listbox
-            onChange={(e) => {
-              setTaskColor(e);
-            }}
-          >
-            <ListboxOption value="3B82F6">Blue</ListboxOption>
-            <ListboxOption value="EF4444">Red</ListboxOption>
-            <ListboxOption value="10B981">Green</ListboxOption>
-            <ListboxOption value="F59E0B">Yellow</ListboxOption>
-          </Listbox>
-        </ColorWrapper>
-      </PickerWrapper>
-      <AddTaskButton
-        type="button"
-        value="Add"
-        onClick={(e) => {
-          handleAdd(taskDescription, taskDuration, taskCompleted, taskColor);
-          setTaskDescription('');
-          setTaskDuration(1);
-          setTaskCompleted(false);
-        }}
-      />
-      <CancelButton type="button" value="Cancel" onClick={(e)=> setAddButtonVisible(visible)}></CancelButton>
-    </MainWrapper>
+          <ColorWrapper>
+            <ColorOrb color={taskColor}></ColorOrb>
+            <Listbox
+              onChange={(e) => {
+                setTaskColor(e);
+              }}
+            >
+              <ListboxOption value="3B82F6">Blue</ListboxOption>
+              <ListboxOption value="EF4444">Red</ListboxOption>
+              <ListboxOption value="10B981">Green</ListboxOption>
+              <ListboxOption value="F59E0B">Yellow</ListboxOption>
+            </Listbox>
+          </ColorWrapper>
+        </PickerWrapper>
+        <AddTaskButton
+          type="button"
+          value={optionEditAdd}
+          onClick={(e) => {
+            handleAdd(taskDescription, taskDuration, taskCompleted, taskColor);
+            setTaskDescription('');
+            setTaskDuration(1);
+            setTaskCompleted(false);
+          }}
+        />
+        <CancelButton
+          type="button"
+          value="Cancel"
+          onClick={(e) => setAddButtonVisible(visible)}
+        ></CancelButton>
+      </MainWrapper>
+    </Dialog>
   );
 }
 
 const MainWrapper = styled.div`
-  ${(props) => (props.visible ? 'display: flex' : 'display:none')};
+  display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 20px;
