@@ -27,8 +27,8 @@ export default function OptionsButton({ element, handleDelete }) {
       <Menu>
         <MenuButton>Options</MenuButton>
         <MenuList>
-          <MenuItem>Edit</MenuItem>
-          <MenuItem onClick={(e) => handleDeleteAlert(element.id)}>
+          <MenuItem onSelect={(e) => console.log(e)}>Edit</MenuItem>
+          <MenuItem onSelect={(e) => handleDeleteAlert(element.id)}>
             Delete
           </MenuItem>
         </MenuList>

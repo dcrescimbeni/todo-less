@@ -72,8 +72,10 @@ export default function TimeColumn({
           </Droppable>
         </TimeBlockWrapper>
         <HourTicksWrapper>
-          {hourTickers.map((element) => {
-            return <HourTickElement time={element}></HourTickElement>;
+          {hourTickers.map((element, index) => {
+            return (
+              <HourTickElement key={index} time={element}></HourTickElement>
+            );
           })}
         </HourTicksWrapper>
         <AddItem
