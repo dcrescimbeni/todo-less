@@ -18,6 +18,8 @@ export default function TimeColumn({
   handleDelete,
   showDialog,
   setShowDialog,
+  editElement,
+  setEditElement,
 }) {
   const [addButtonVisible, setAddButtonVisible] = useState(true);
 
@@ -62,6 +64,10 @@ export default function TimeColumn({
                             handleToggledTask={handleToggledTask}
                             handleEdit={handleEdit}
                             handleDelete={handleDelete}
+                            showDialog={showDialog}
+                            setShowDialog={setShowDialog}
+                            editElement={editElement}
+                            setEditElement={setEditElement}
                           ></TaskCard>
                         </TaskElement>
                       )}
@@ -86,6 +92,8 @@ export default function TimeColumn({
           setAddButtonVisible={setAddButtonVisible}
           showDialog={showDialog}
           setShowDialog={setShowDialog}
+          editElement={editElement}
+          setEditElement={setEditElement}
         ></AddItem>
         <AddButton
           visible={addButtonVisible}

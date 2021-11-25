@@ -59,6 +59,7 @@ function App() {
   const [taskDuration, setTaskDuration] = useState(1);
   const [taskCompleted, setTaskCompleted] = useState(false);
   const [taskColor, setTaskColor] = useState(colors.blue);
+  const [editElement, setEditElement] = useState({});
 
   // General configuration related states
   const [timeStart, setTimeStart] = useState(9);
@@ -171,6 +172,8 @@ function App() {
         handleDelete={handleDelete}
         showDialog={showDialog}
         setShowDialog={setShowDialog}
+        editElement={editElement}
+        setEditElement={setEditElement}
       />
       {/* <TaskColumn
         todoList={todoList}

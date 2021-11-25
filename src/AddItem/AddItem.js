@@ -14,6 +14,8 @@ export default function AddItem({
   setAddButtonVisible,
   showDialog,
   setShowDialog,
+  editElement,
+  setEditElement,
 }) {
   // Task-related useState
   const [taskDescription, setTaskDescription] = useState('');
@@ -25,11 +27,12 @@ export default function AddItem({
   const inputRef = useRef();
 
   let optionEditAdd = 'Add';
-  if (element) {
-    setTaskDescription(element.description);
-    setTaskDuration(element.duration);
-    setTaskCompleted(element.completed);
-    setTaskColor(element.color);
+
+  if (editElement) {
+    // setTaskDescription(editElement.description);
+    // setTaskDuration(editElement.duration);
+    // setTaskCompleted(editElement.completed);
+    // setTaskColor(editElement.color);
 
     // Button changes content depending of add or edit
     optionEditAdd = 'Edit';

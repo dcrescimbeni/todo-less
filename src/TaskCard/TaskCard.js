@@ -7,6 +7,10 @@ export default function TaskCard({
   handleToggledTask,
   handleEdit,
   handleDelete,
+  showDialog,
+  setShowDialog,
+  editElement,
+  setEditElement,
 }) {
   const [editVisible, setEditVisible] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
@@ -24,6 +28,11 @@ export default function TaskCard({
         <OptionsButton
           element={element}
           handleDelete={handleDelete}
+          handleEdit={handleEdit}
+          showDialog={showDialog}
+          setShowDialog={setShowDialog}
+          editElement={editElement}
+          setEditElement={setEditElement}
         ></OptionsButton>
       </Wrapper>
     </>
