@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-//TODO: Can't make listbox to work inside Edit component...
-
 export default function EditPrompt({
   element,
   handleEdit,

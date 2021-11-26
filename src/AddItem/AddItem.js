@@ -9,13 +9,9 @@ import styled from 'styled-components';
 
 export default function AddItem({
   handleAdd,
-  element,
-  visible,
-  setAddButtonVisible,
   showDialog,
   setShowDialog,
-  editElement,
-  setEditElement,
+  element,
 }) {
   // Task-related useState
   const [taskDescription, setTaskDescription] = useState('');
@@ -26,16 +22,22 @@ export default function AddItem({
   // Dialog config
   const inputRef = useRef();
 
-  let optionEditAdd = 'Add';
+  // Handlers
+  function close() {
+    setShowDialog(false);
+    setTaskDescription('');
+    setTaskDuration(1);
+    setTaskCompleted(false);
+  }
 
   return (
     <Dialog
       isOpen={showDialog}
-      onDismiss={(e) => setShowDialog(false)}
+      onDismiss={close}
       aria-label="Add or edit task"
       initialFocusRef={inputRef}
     >
-      <button className="close-button" onClick={(e) => setShowDialog(false)}>
+      <button className="close-button" onClick={close}>
         <span aria-hidden>x</span>
       </button>
       <MainWrapper>
@@ -90,16 +92,8 @@ export default function AddItem({
         <CancelButton
           type="button"
           value="Cancel"
-          onClick={(e) => setAddButtonVisible(visible)}
+          onClick={close}
         ></CancelButton>
-        <input
-          type="button"
-          value="test"
-          onClick={(e) => {
-            setTaskDescription('test');
-            console.log(element);
-          }}
-        ></input>
       </MainWrapper>
     </Dialog>
   );

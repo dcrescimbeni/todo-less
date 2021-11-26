@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import OptionsButton from '../OptionsButton/OptionsButton';
+import AddItem from '../AddItem/AddItem';
 
 export default function TaskCard({
   element,
@@ -11,6 +12,7 @@ export default function TaskCard({
   setShowDialog,
   editElement,
   setEditElement,
+  handleAdd,
 }) {
   const [editVisible, setEditVisible] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
