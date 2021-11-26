@@ -68,6 +68,7 @@ export default function TimeColumn({
                             setShowDialog={setShowDialog}
                             editElement={editElement}
                             setEditElement={setEditElement}
+                            handleAdd={handleAdd}
                           ></TaskCard>
                         </TaskElement>
                       )}
@@ -88,12 +89,9 @@ export default function TimeColumn({
         </HourTicksWrapper>
         <AddItem
           handleAdd={handleAdd}
-          visible={!addButtonVisible}
-          setAddButtonVisible={setAddButtonVisible}
           showDialog={showDialog}
           setShowDialog={setShowDialog}
-          editElement={editElement}
-          setEditElement={setEditElement}
+          element={{}}
         ></AddItem>
         <AddButton
           visible={addButtonVisible}
