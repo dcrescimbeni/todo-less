@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { Listbox, ListboxOption } from '@reach/listbox';
 import '@reach/listbox/styles.css';
-import { Dialog, DialogOverlay, DialogContent } from '@reach/dialog';
+import { Dialog } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import './AddItem.css';
 

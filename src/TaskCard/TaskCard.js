@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import OptionsButton from '../OptionsButton/OptionsButton';
-import AddItem from '../AddItem/AddItem';
 
 export default function TaskCard({
   element,
@@ -12,18 +10,10 @@ export default function TaskCard({
   setShowDialog,
   editElement,
   setEditElement,
-  handleAdd,
 }) {
-  const [editVisible, setEditVisible] = useState(false);
-  const [optionsVisible, setOptionsVisible] = useState(false);
-
   return (
     <>
-      <Wrapper
-        visible={!editVisible}
-        onMouseOver={(e) => setOptionsVisible(true)}
-        onMouseLeave={(e) => setOptionsVisible(false)}
-      >
+      <Wrapper>
         <ColorCode color={element.color}></ColorCode>
         <ElementDescription>{element.description}</ElementDescription>
         <ElementDuration>{element.duration} hour</ElementDuration>

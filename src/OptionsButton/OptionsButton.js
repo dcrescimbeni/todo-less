@@ -1,13 +1,5 @@
 import styled from 'styled-components';
-import {
-  Menu,
-  MenuList,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  MenuPopover,
-  MenuLink,
-} from '@reach/menu-button';
+import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button';
 import '@reach/menu-button/styles.css';
 
 import './OptionsButton.css';
