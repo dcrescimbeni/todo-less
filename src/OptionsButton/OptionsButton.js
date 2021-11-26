@@ -30,11 +30,11 @@ export default function OptionsButton({
     }
   }
 
-  // Handles edit
-  function onEdit(element) {
-    console.log(element);
-    // setShowDialog(true);
-    // setEditElement(element);
+  // Edit click handler
+  function handleEditClick(elementObject) {
+    setShowDialog(true);
+    console.log(elementObject);
+    setEditElement(elementObject);
   }
 
   return (
@@ -44,7 +44,7 @@ export default function OptionsButton({
         <MenuList>
           <MenuItem
             onSelect={(e) => {
-              onEdit(element);
+              handleEditClick(element);
             }}
           >
             Edit

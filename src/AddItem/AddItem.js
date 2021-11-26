@@ -28,16 +28,6 @@ export default function AddItem({
 
   let optionEditAdd = 'Add';
 
-  if (editElement) {
-    // setTaskDescription(editElement.description);
-    // setTaskDuration(editElement.duration);
-    // setTaskCompleted(editElement.completed);
-    // setTaskColor(editElement.color);
-
-    // Button changes content depending of add or edit
-    optionEditAdd = 'Edit';
-  }
-
   return (
     <Dialog
       isOpen={showDialog}
@@ -49,7 +39,7 @@ export default function AddItem({
         <span aria-hidden>x</span>
       </button>
       <MainWrapper>
-        <DescriptionHelper>{optionEditAdd} task</DescriptionHelper>
+        <DescriptionHelper>Add task</DescriptionHelper>
         <DescriptionInput
           type="text"
           value={taskDescription}
@@ -89,7 +79,7 @@ export default function AddItem({
         </PickerWrapper>
         <AddTaskButton
           type="button"
-          value={optionEditAdd}
+          value="Add"
           onClick={(e) => {
             handleAdd(taskDescription, taskDuration, taskCompleted, taskColor);
             setTaskDescription('');
@@ -102,6 +92,14 @@ export default function AddItem({
           value="Cancel"
           onClick={(e) => setAddButtonVisible(visible)}
         ></CancelButton>
+        <input
+          type="button"
+          value="test"
+          onClick={(e) => {
+            setTaskDescription('test');
+            console.log(element);
+          }}
+        ></input>
       </MainWrapper>
     </Dialog>
   );
