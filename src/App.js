@@ -38,7 +38,7 @@ import { v4 as uuidv4 } from 'uuid';
 // In case there are no items in localStorage (new user)
 // create an empty key
 if (!localStorage.getItem('todolist')) {
-  localStorage.setItem('todolist', []);
+  localStorage.setItem('todolist', '[]');
 }
 
 let items = JSON.parse(localStorage.getItem('todolist'));
