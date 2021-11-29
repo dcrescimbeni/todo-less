@@ -52,8 +52,10 @@ export default function EditPrompt({
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  padding: 15px 0px;
+  width: 100%;
+  padding: 15px 10px;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const InformationWrapper = styled.div`
@@ -61,6 +63,11 @@ const InformationWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const DescriptionInput = styled.input`
@@ -88,8 +95,7 @@ const SaveButton = styled.input`
   font-weight: bold;
   color: white;
   padding: 10px;
-  margin-top: 10px;
-  margin-right: 10px;
+  margin-right: 5px;
   border: 0px;
   border-radius: 5px;
   flex-grow: 9;
@@ -101,12 +107,7 @@ const DeleteButton = styled.input`
   font-weight: bold;
   color: white;
   padding: 10px;
-  margin-top: 10px;
   border: 0px;
   border-radius: 5px;
   flex-grow: 1;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
 `;
