@@ -175,20 +175,6 @@ function App() {
         editElement={editElement}
         setEditElement={setEditElement}
       />
-      {/* <TaskColumn
-        todoList={todoList}
-        handleAdd={handleAdd}
-        taskDescription={taskDescription}
-        handleDescriptionChange={handleDescriptionChange}
-        taskDuration={taskDuration}
-        handleDurationChange={handleDurationChange}
-        handleToggledTask={handleToggledTask}
-        taskColor={taskColor}
-        handleColorChange={handleColorChange}
-        handleOnDragEnd={handleOnDragEnd}
-        handleEdit={handleEdit}
-        handleDelete={handleDelete}
-      /> */}
     </div>
   );
 }
