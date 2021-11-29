@@ -4,15 +4,7 @@ import '@reach/menu-button/styles.css';
 
 import './OptionsButton.css';
 
-export default function OptionsButton({
-  element,
-  handleDelete,
-  handleEdit,
-  showDialog,
-  setShowDialog,
-  editElement,
-  setEditElement,
-}) {
+export default function OptionsButton({ element, handleDelete, toggleEdit }) {
   // Handles delete confirmation
   function handleDeleteAlert(id) {
     let result = window.confirm('Do you want to delete the task?');
@@ -22,25 +14,12 @@ export default function OptionsButton({
     }
   }
 
-  // Edit click handler
-  function handleEditClick(elementObject) {
-    setShowDialog(true);
-    console.log(elementObject);
-    setEditElement(elementObject);
-  }
-
   return (
     <Wrapper>
       <Menu>
         <MenuButton>Options</MenuButton>
         <MenuList>
-          <MenuItem
-            onSelect={(e) => {
-              handleEditClick(element);
-            }}
-          >
-            Edit
-          </MenuItem>
+          <MenuItem onSelect={toggleEdit}>Edit</MenuItem>
           <MenuItem onSelect={(e) => handleDeleteAlert(element.id)}>
             Delete
           </MenuItem>

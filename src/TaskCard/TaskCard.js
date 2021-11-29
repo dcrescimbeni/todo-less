@@ -1,5 +1,8 @@
+import { useState } from 'react';
+
 import styled from 'styled-components';
 import OptionsButton from '../OptionsButton/OptionsButton';
+import EditPrompt from '../EditPrompt/EditPrompt';
 
 export default function TaskCard({
   element,
@@ -11,33 +14,52 @@ export default function TaskCard({
   editElement,
   setEditElement,
 }) {
+  const [editVisible, setEditVisible] = useState(false);
+
+  function toggleEdit() {
+    setEditVisible(!editVisible);
+  }
+
   return (
     <>
       <Wrapper>
-        <ColorCode color={element.color}></ColorCode>
-        <ElementDescription>{element.description}</ElementDescription>
-        <ElementDuration>{element.duration} hour</ElementDuration>
-        <OptionsButton
-          element={element}
-          handleDelete={handleDelete}
-          handleEdit={handleEdit}
-          showDialog={showDialog}
-          setShowDialog={setShowDialog}
-          editElement={editElement}
-          setEditElement={setEditElement}
-        ></OptionsButton>
+        <TaskWrapper visible={!editVisible} onDoubleClick={toggleEdit}>
+          <ColorCode color={element.color}></ColorCode>
+          <ElementDescription>{element.description}</ElementDescription>
+          <ElementDuration>{element.duration} hour</ElementDuration>
+          <OptionsButton
+            element={element}
+            handleDelete={handleDelete}
+            toggleEdit={toggleEdit}
+          ></OptionsButton>
+        </TaskWrapper>
+        <EditWrapper visible={editVisible}>
+          <EditPrompt
+            element={element}
+            handleEdit={handleEdit}
+            toggleEdit={toggleEdit}
+            handleDelete={handleDelete}
+          ></EditPrompt>
+        </EditWrapper>
       </Wrapper>
     </>
   );
 }
 
 const Wrapper = styled.div`
-  display: flex;
+  width: 100%;
+`;
+
+const TaskWrapper = styled.div`
+  display: ${(props) => (props.visible ? 'flex;' : 'none')};
   justify-content: space-between;
   align-items: center;
   padding: 0px 10px;
-  width: 100%;
   height: 100%;
+`;
+
+const EditWrapper = styled.div`
+  display: ${(props) => (props.visible ? 'flex;' : 'none')};
 `;
 
 const ColorCode = styled.div`
