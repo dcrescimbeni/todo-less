@@ -34,7 +34,7 @@ export default function AddItem({
     <Dialog
       isOpen={showDialog}
       onDismiss={close}
-      aria-label="Add or edit task"
+      aria-label="Add task"
       initialFocusRef={inputRef}
     >
       <button className="close-button" onClick={close}>

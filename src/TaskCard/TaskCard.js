@@ -23,7 +23,7 @@ export default function TaskCard({
   return (
     <>
       <Wrapper>
-        <TaskWrapper visible={!editVisible} onDoubleClick={toggleEdit}>
+        <TaskWrapper onDoubleClick={toggleEdit}>
           <ColorCode color={element.color}></ColorCode>
           <ElementDescription>{element.description}</ElementDescription>
           <ElementDuration>{element.duration} hour</ElementDuration>
@@ -33,12 +33,13 @@ export default function TaskCard({
             toggleEdit={toggleEdit}
           ></OptionsButton>
         </TaskWrapper>
-        <EditWrapper visible={editVisible}>
+        <EditWrapper>
           <EditPrompt
             element={element}
             handleEdit={handleEdit}
             toggleEdit={toggleEdit}
             handleDelete={handleDelete}
+            editVisible={editVisible}
           ></EditPrompt>
         </EditWrapper>
       </Wrapper>
@@ -51,16 +52,14 @@ const Wrapper = styled.div`
 `;
 
 const TaskWrapper = styled.div`
-  display: ${(props) => (props.visible ? 'flex;' : 'none')};
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 10px;
   height: 100%;
 `;
 
-const EditWrapper = styled.div`
-  display: ${(props) => (props.visible ? 'flex;' : 'none')};
-`;
+const EditWrapper = styled.div``;
 
 const ColorCode = styled.div`
   height: 22px;

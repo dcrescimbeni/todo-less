@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { Dialog } from '@reach/dialog';
 
 export default function EditPrompt({
   element,
   handleEdit,
   toggleEdit,
   handleDelete,
+  editVisible,
 }) {
   const [newDescription, setNewDescription] = useState(element.description);
   const [newDuration, setNewDuration] = useState(element.duration);
@@ -15,8 +17,10 @@ export default function EditPrompt({
     toggleEdit();
   }
 
+  console.log(editVisible);
+
   return (
-    <Wrapper>
+    <Dialog isOpen={editVisible} onDismiss={toggleEdit} aria-label="Edit task">
       <InformationWrapper>
         <DescriptionInput
           key={element.id}
@@ -31,7 +35,6 @@ export default function EditPrompt({
         ></HourInput>
         <HourIndicator> hours</HourIndicator>
       </InformationWrapper>
-
       <ButtonWrapper>
         <SaveButton
           type="button"
@@ -46,7 +49,7 @@ export default function EditPrompt({
           }}
         ></DeleteButton>
       </ButtonWrapper>
-    </Wrapper>
+    </Dialog>
   );
 }
 
