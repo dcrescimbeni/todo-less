@@ -7,12 +7,7 @@ import './AddItem.css';
 
 import styled from 'styled-components';
 
-export default function AddItem({
-  handleAdd,
-  showDialog,
-  setShowDialog,
-  element,
-}) {
+export default function AddItem({ handleAdd, showDialog, setShowDialog }) {
   // Task-related useState
   const [taskDescription, setTaskDescription] = useState('');
   const [taskDuration, setTaskDuration] = useState(1);

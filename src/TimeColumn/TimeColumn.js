@@ -21,8 +21,6 @@ export default function TimeColumn({
   editElement,
   setEditElement,
 }) {
-  const [addButtonVisible, setAddButtonVisible] = useState(true);
-
   // Calculate hour tickers
   let hourTickers = [];
   let currentTime = timeStart;
@@ -85,11 +83,8 @@ export default function TimeColumn({
           handleAdd={handleAdd}
           showDialog={showDialog}
           setShowDialog={setShowDialog}
-          element={{}}
         ></AddItem>
         <AddButton
-          visible={addButtonVisible}
-          setAddButtonVisible={setAddButtonVisible}
           showDialog={showDialog}
           setShowDialog={setShowDialog}
         ></AddButton>

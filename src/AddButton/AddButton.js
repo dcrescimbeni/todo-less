@@ -1,13 +1,8 @@
 import styled from 'styled-components';
 
-export default function AddButton({
-  visible,
-  setAddButtonVisible,
-  showDialog,
-  setShowDialog,
-}) {
+export default function AddButton({ showDialog, setShowDialog }) {
   return (
-    <Wrapper visible={visible}>
+    <Wrapper>
       <AddButtonFull
         type="button"
         value="Add"
@@ -17,8 +12,6 @@ export default function AddButton({
   );
 }
 
-const Wrapper = styled.div`
-  ${(props) => (props.visible ? '' : 'display:none')}
-`;
+const Wrapper = styled.div``;
 
 const AddButtonFull = styled.input``;
