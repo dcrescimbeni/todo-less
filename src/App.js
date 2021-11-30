@@ -119,6 +119,7 @@ function App() {
         todoList={todoList}
         handleOnDragEnd={handleOnDragEnd}
         timeStart={timeStart}
+        setTimeStart={setTimeStart}
         handleAdd={handleAdd}
         handleEdit={handleEdit}
         handleDelete={handleDelete}

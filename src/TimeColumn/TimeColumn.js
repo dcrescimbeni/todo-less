@@ -1,14 +1,17 @@
+import { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import HourTickElement from '../HourTickElement/HourTickElement';
 import AddButton from '../AddButton/AddButton';
 import AddItem from '../AddItem/AddItem';
 import TaskCard from '../TaskCard/TaskCard';
+import ConfigDialog from '../ConfigDialog/ConfigDialog';
 
 export default function TimeColumn({
   todoList,
   handleOnDragEnd,
   timeStart,
+  setTimeStart,
   handleAdd,
   handleEdit,
   handleDelete,
@@ -16,6 +19,9 @@ export default function TimeColumn({
   setShowDialog,
   handleToggledTask,
 }) {
+  // UseState to control config dialog
+  const [showConfigDialog, setShowConfigDialog] = useState(false);
+
   // Calculate hour tickers
   let hourTickers = [];
   let currentTime = timeStart;
@@ -84,6 +90,18 @@ export default function TimeColumn({
           showDialog={showDialog}
           setShowDialog={setShowDialog}
         ></AddButton>
+        <ConfigDialog
+          showConfigDialog={showConfigDialog}
+          setShowConfigDialog={setShowConfigDialog}
+          timeStart={timeStart}
+          setTimeStart={setTimeStart}
+        ></ConfigDialog>
+        <input
+          type="button"
+          value="Config"
+          onClick={(e) => setShowConfigDialog(true)}
+        />
+        <input type="button" value="Clear all" />
       </MainColumn>
     </DragDropContext>
   );
