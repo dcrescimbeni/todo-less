@@ -14,6 +14,7 @@ export default function TimeColumn({
   handleDelete,
   showDialog,
   setShowDialog,
+  handleToggledTask,
 }) {
   // Calculate hour tickers
   let hourTickers = [];
@@ -55,6 +56,7 @@ export default function TimeColumn({
                             element={element}
                             handleEdit={handleEdit}
                             handleDelete={handleDelete}
+                            handleToggledTask={handleToggledTask}
                           ></TaskCard>
                         </TaskElement>
                       )}

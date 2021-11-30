@@ -4,7 +4,12 @@ import styled from 'styled-components';
 import OptionsButton from '../OptionsButton/OptionsButton';
 import EditPrompt from '../EditPrompt/EditPrompt';
 
-export default function TaskCard({ element, handleEdit, handleDelete }) {
+export default function TaskCard({
+  element,
+  handleEdit,
+  handleDelete,
+  handleToggledTask,
+}) {
   const [editVisible, setEditVisible] = useState(false);
 
   function toggleEdit() {
@@ -14,8 +19,11 @@ export default function TaskCard({ element, handleEdit, handleDelete }) {
   return (
     <>
       <Wrapper>
-        <TaskWrapper onDoubleClick={toggleEdit}>
-          <ColorCode color={element.color}></ColorCode>
+        <TaskWrapper onDoubleClick={toggleEdit} completed={element.completed}>
+          <ColorCode
+            color={element.color}
+            onClick={(e) => handleToggledTask(element.id, !element.completed)}
+          ></ColorCode>
           <ElementDescription>{element.description}</ElementDescription>
           <ElementDuration>{element.duration} hour</ElementDuration>
           <OptionsButton
@@ -48,6 +56,7 @@ const TaskWrapper = styled.div`
   align-items: center;
   padding: 0px 10px;
   height: 100%;
+  opacity: ${(props) => (props.completed ? '0.7' : '1')};
 `;
 
 const EditWrapper = styled.div``;

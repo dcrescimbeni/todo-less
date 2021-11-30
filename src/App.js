@@ -78,20 +78,22 @@ function App() {
   }
 
   function handleDelete(taskId) {
-    let current = [...todoList];
-    console.log(taskId);
+    let result = window.confirm('Do you want to delete the task?');
 
-    let nextTasks = current.filter((element) => {
-      if (element.id !== taskId) {
-        return true;
-      } else {
-        return false;
-      }
-    });
+    if (result) {
+      let current = [...todoList];
+      console.log(taskId);
 
-    updateLocalStorage(nextTasks);
+      let nextTasks = current.filter((element) => {
+        if (element.id !== taskId) {
+          return true;
+        } else {
+          return false;
+        }
+      });
 
-    console.log('test delete');
+      updateLocalStorage(nextTasks);
+    }
   }
 
   // Handles opacity change for completed/pending tasks
@@ -100,6 +102,7 @@ function App() {
     const targetTask = newTodo.find((element) => element.id === taskId);
     targetTask.completed = completedStatus;
     setTodoList(newTodo);
+    updateLocalStorage(newTodo);
   }
 
   function handleOnDragEnd(result) {
@@ -121,6 +124,7 @@ function App() {
         handleDelete={handleDelete}
         showDialog={showDialog}
         setShowDialog={setShowDialog}
+        handleToggledTask={handleToggledTask}
       />
     </div>
   );
