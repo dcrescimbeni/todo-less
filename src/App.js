@@ -1,39 +1,7 @@
 import './App.css';
-import TaskColumn from './TaskColumn/TaskColumn';
 import TimeColumn from './TimeColumn/TimeColumn';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
-// let items = [
-//   {
-//     id: 1,
-//     description: 'Design app prototype in Figma',
-//     duration: 2,
-//     completed: false,
-//     color: 'EF4444',
-//   },
-//   {
-//     id: 2,
-//     description: 'Start React project',
-//     duration: 1,z
-//     completed: true,
-//     color: 'F59E0B',
-//   },
-//   {
-//     id: 3,
-//     description: 'Implement first working prototype and push to Github',
-//     duration: 4,
-//     completed: false,
-//     color: '3B82F6',
-//   },
-//   {
-//     id: 4,
-//     description: 'Celebrate with beer',
-//     duration: 1,
-//     completed: true,
-//     color: '10B981',
-//   },
-// ];
 
 // In case there are no items in localStorage (new user)
 // create an empty key
@@ -54,12 +22,8 @@ function App() {
   const [todoList, setTodoList] = useState(items);
 
   // Task related states
-  const [taskId, setTaskId] = useState();
   const [taskDescription, setTaskDescription] = useState('');
   const [taskDuration, setTaskDuration] = useState(1);
-  const [taskCompleted, setTaskCompleted] = useState(false);
-  const [taskColor, setTaskColor] = useState(colors.blue);
-  const [editElement, setEditElement] = useState({});
 
   // General configuration related states
   const [timeStart, setTimeStart] = useState(9);
@@ -130,24 +94,12 @@ function App() {
     console.log('test delete');
   }
 
-  function handleDescriptionChange(e) {
-    setTaskDescription(e.target.value);
-  }
-
-  function handleDurationChange(e) {
-    setTaskDuration(e.target.value);
-  }
-
   // Handles opacity change for completed/pending tasks
   function handleToggledTask(taskId, completedStatus) {
     const newTodo = [...todoList];
     const targetTask = newTodo.find((element) => element.id === taskId);
     targetTask.completed = completedStatus;
     setTodoList(newTodo);
-  }
-
-  function handleColorChange(e) {
-    setTaskColor(colors[e]);
   }
 
   function handleOnDragEnd(result) {
@@ -162,18 +114,13 @@ function App() {
     <div className="App">
       <TimeColumn
         todoList={todoList}
-        setTodoList={setTodoList}
         handleOnDragEnd={handleOnDragEnd}
-        taskColor={taskColor}
         timeStart={timeStart}
         handleAdd={handleAdd}
-        handleToggledTask={handleToggledTask}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
         showDialog={showDialog}
         setShowDialog={setShowDialog}
-        editElement={editElement}
-        setEditElement={setEditElement}
       />
     </div>
   );

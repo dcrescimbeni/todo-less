@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import HourTickElement from '../HourTickElement/HourTickElement';
@@ -8,18 +7,13 @@ import TaskCard from '../TaskCard/TaskCard';
 
 export default function TimeColumn({
   todoList,
-  setTodoList,
   handleOnDragEnd,
-  taskColor,
   timeStart,
   handleAdd,
-  handleToggledTask,
   handleEdit,
   handleDelete,
   showDialog,
   setShowDialog,
-  editElement,
-  setEditElement,
 }) {
   // Calculate hour tickers
   let hourTickers = [];
