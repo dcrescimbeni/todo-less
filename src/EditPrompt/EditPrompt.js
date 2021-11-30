@@ -86,6 +86,7 @@ const InformationWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 `;
 
 const ButtonWrapper = styled.div`
@@ -102,12 +103,13 @@ const DescriptionInput = styled.input`
 `;
 
 const HourInput = styled.input`
+  font-size: 20px;
   font-weight: bold;
-  font-size: 16px;
-  width: 2rem;
+  color: #212529;
+  padding: 15px 5px;
   border: 0px;
+  width: 2rem;
   text-align: right;
-  margin-right: 5px;
 `;
 
 const HourIndicator = styled.div`
