@@ -4,16 +4,7 @@ import styled from 'styled-components';
 import OptionsButton from '../OptionsButton/OptionsButton';
 import EditPrompt from '../EditPrompt/EditPrompt';
 
-export default function TaskCard({
-  element,
-  handleToggledTask,
-  handleEdit,
-  handleDelete,
-  showDialog,
-  setShowDialog,
-  editElement,
-  setEditElement,
-}) {
+export default function TaskCard({ element, handleEdit, handleDelete }) {
   const [editVisible, setEditVisible] = useState(false);
 
   function toggleEdit() {

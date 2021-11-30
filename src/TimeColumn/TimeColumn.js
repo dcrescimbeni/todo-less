@@ -61,14 +61,8 @@ export default function TimeColumn({
                         >
                           <TaskCard
                             element={element}
-                            handleToggledTask={handleToggledTask}
                             handleEdit={handleEdit}
                             handleDelete={handleDelete}
-                            showDialog={showDialog}
-                            setShowDialog={setShowDialog}
-                            editElement={editElement}
-                            setEditElement={setEditElement}
-                            handleAdd={handleAdd}
                           ></TaskCard>
                         </TaskElement>
                       )}
