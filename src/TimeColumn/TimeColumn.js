@@ -29,6 +29,9 @@ export default function TimeColumn({
   todoList.forEach((element) => {
     for (let i = 1; i <= parseInt(element.duration); i++) {
       hourTickers.push(currentTime);
+      if (currentTime === 23) {
+        currentTime = -1;
+      }
       currentTime++;
     }
   });
