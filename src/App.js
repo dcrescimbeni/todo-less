@@ -3,10 +3,17 @@ import TimeColumn from './TimeColumn/TimeColumn';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+// Default starting time
+let defaultStartingTime = 9;
+
 // In case there are no items in localStorage (new user)
 // create an empty key
 if (!localStorage.getItem('todolist')) {
   localStorage.setItem('todolist', '[]');
+}
+
+if (!localStorage.getItem('startingTime')) {
+  localStorage.setItem('startingTime', defaultStartingTime);
 }
 
 let items = JSON.parse(localStorage.getItem('todolist'));
@@ -26,7 +33,7 @@ function App() {
   const [taskDuration, setTaskDuration] = useState(1);
 
   // General configuration related states
-  const [timeStart, setTimeStart] = useState(9);
+  const [timeStart, setTimeStart] = useState(defaultStartingTime);
 
   // Dialog function useState
   const [showDialog, setShowDialog] = useState(false);
@@ -73,7 +80,6 @@ function App() {
       }
     });
 
-    console.log(nextTasks);
     updateLocalStorage(nextTasks);
   }
 
