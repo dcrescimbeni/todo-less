@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Dialog } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import styled from 'styled-components';
@@ -8,16 +9,21 @@ export default function ConfigDialog({
   timeStart,
   setTimeStart,
 }) {
-  function close() {
+  const [newStartingTime, setNewStartingTime] = useState(timeStart);
+
+  function closeAndCancel() {
     setShowConfigDialog(false);
   }
 
-  function handleTimeChange() {}
+  function closeAndSave() {
+    setShowConfigDialog(false);
+    setTimeStart(newStartingTime);
+  }
 
   return (
     <Dialog
       isOpen={showConfigDialog}
-      onDismiss={close}
+      onDismiss={closeAndCancel}
       aria-label="Configuration options dialog"
     >
       Starting time{' '}
@@ -25,11 +31,11 @@ export default function ConfigDialog({
         type="text"
         name="startingTimeInput"
         id="startingTimeInput"
-        value={timeStart}
-        onChange={(e) => setTimeStart(e.target.value)}
+        value={newStartingTime}
+        onChange={(e) => setNewStartingTime(e.target.value)}
       />
-      <input type="button" value="Save" />
-      <input type="button" value="Cancel" />
+      <input type="button" value="Save" onClick={closeAndSave} />
+      <input type="button" value="Cancel" onClick={closeAndCancel} />
     </Dialog>
   );
 }
