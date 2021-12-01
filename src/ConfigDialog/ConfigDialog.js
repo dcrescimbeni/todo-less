@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dialog } from '@reach/dialog';
 import '@reach/dialog/styles.css';
 import styled from 'styled-components';
@@ -10,14 +10,36 @@ export default function ConfigDialog({
   setTimeStart,
 }) {
   const [newStartingTime, setNewStartingTime] = useState(timeStart);
+  const [errorArray, setErrorArray] = useState([]);
+
+  let nextErrorArray = [];
 
   function closeAndCancel() {
     setShowConfigDialog(false);
   }
 
   function closeAndSave() {
-    setShowConfigDialog(false);
-    setTimeStart(newStartingTime);
+    // Check for correct type (numbers)
+    if (typeof newStartingTime !== 'number') {
+      console.log(typeof newStartingTime);
+      nextErrorArray.push('It must be a number');
+    }
+
+    // Check for whole numbers only
+    if (newStartingTime % 1 !== 0) {
+      nextErrorArray.push('It must be an integer');
+    }
+    // Check for min and max values
+    if (newStartingTime < 0 || newStartingTime > 23) {
+      nextErrorArray.push(`It can't be less than 0 and bigger than 23`);
+    }
+
+    setErrorArray(nextErrorArray);
+
+    if (nextErrorArray.length === 0) {
+      setShowConfigDialog(false);
+      setTimeStart(newStartingTime);
+    }
   }
 
   return (
@@ -28,14 +50,17 @@ export default function ConfigDialog({
     >
       Starting time{' '}
       <input
-        type="text"
+        type="number"
         name="startingTimeInput"
         id="startingTimeInput"
         value={newStartingTime}
-        onChange={(e) => setNewStartingTime(e.target.value)}
+        onChange={(e) => setNewStartingTime(parseInt(e.target.value))}
       />
       <input type="button" value="Save" onClick={closeAndSave} />
       <input type="button" value="Cancel" onClick={closeAndCancel} />
+      {errorArray.map((value) => {
+        return <p>{value}</p>;
+      })}
     </Dialog>
   );
 }
