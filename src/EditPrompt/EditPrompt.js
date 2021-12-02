@@ -13,8 +13,8 @@ export default function EditPrompt({
   const [newDuration, setNewDuration] = useState(parseInt(element.duration));
 
   const [errorArray, setErrorArray] = useState([]);
-
   let nextErrorArray = [];
+
   function handleSaveEdit() {
     if (typeof newDuration !== 'number') {
       nextErrorArray.push('It must be a number');
@@ -37,9 +37,17 @@ export default function EditPrompt({
     }
   }
 
+  function handleClose() {
+    toggleEdit();
+    nextErrorArray = [];
+    setErrorArray(nextErrorArray);
+    setNewDescription(element.description);
+    setNewDuration(element.duration);
+  }
+
   return (
-    <Dialog isOpen={editVisible} onDismiss={toggleEdit} aria-label="Edit task">
-      <button className="close-button" onClick={toggleEdit}>
+    <Dialog isOpen={editVisible} onDismiss={handleClose} aria-label="Edit task">
+      <button className="close-button" onClick={handleClose}>
         <span aria-hidden>x</span>
       </button>
       <MainWrapper>
@@ -70,7 +78,7 @@ export default function EditPrompt({
           <CancelButton
             type="button"
             value="Cancel"
-            onClick={toggleEdit}
+            onClick={handleClose}
           ></CancelButton>
           <DeleteButton
             type="button"

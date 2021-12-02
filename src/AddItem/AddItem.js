@@ -52,6 +52,8 @@ export default function AddItem({ handleAdd, showDialog, setShowDialog }) {
     setTaskDescription('');
     setTaskDuration(1);
     setTaskCompleted(false);
+    nextErrorArray = [];
+    setErrorArray(nextErrorArray);
   }
 
   return (
@@ -87,7 +89,7 @@ export default function AddItem({ handleAdd, showDialog, setShowDialog }) {
               onChange={(e) => setTaskDuration(parseInt(e.target.value))}
               autoComplete="off"
             />
-            hour
+            {taskDuration > 1 ? 'hours' : 'hour'}
           </DurationWrapper>
 
           <ColorWrapper>
