@@ -25,7 +25,9 @@ export default function TaskCard({
             onClick={(e) => handleToggledTask(element.id, !element.completed)}
           ></ColorCode>
           <ElementDescription>{element.description}</ElementDescription>
-          <ElementDuration>{element.duration} hour</ElementDuration>
+          <ElementDuration>
+            {element.duration} {element.duration > 1 ? 'hours' : 'hour'}
+          </ElementDuration>
           <OptionsButton
             element={element}
             handleDelete={handleDelete}

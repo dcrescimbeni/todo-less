@@ -12,16 +12,14 @@ export default function ConfigDialog({
   const [newStartingTime, setNewStartingTime] = useState(timeStart);
   const [errorArray, setErrorArray] = useState([]);
 
-  let nextErrorArray = [];
-
   function closeAndCancel() {
     setShowConfigDialog(false);
   }
 
+  let nextErrorArray = [];
   function closeAndSave() {
     // Check for correct type (numbers)
     if (typeof newStartingTime !== 'number') {
-      console.log(typeof newStartingTime);
       nextErrorArray.push('It must be a number');
     }
 

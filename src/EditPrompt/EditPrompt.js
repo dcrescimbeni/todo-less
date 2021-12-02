@@ -10,11 +10,32 @@ export default function EditPrompt({
   editVisible,
 }) {
   const [newDescription, setNewDescription] = useState(element.description);
-  const [newDuration, setNewDuration] = useState(element.duration);
+  const [newDuration, setNewDuration] = useState(parseInt(element.duration));
 
+  const [errorArray, setErrorArray] = useState([]);
+
+  let nextErrorArray = [];
   function handleSaveEdit() {
-    handleEdit(element.id, newDescription, newDuration);
-    toggleEdit();
+    // Check for correct type (number)
+    if (typeof newDuration !== 'number') {
+      nextErrorArray.push('It must be a number');
+    }
+
+    if (newDuration % 1 !== 0) {
+      nextErrorArray.push('It must be an integer');
+    }
+
+    if (newDuration < 1) {
+      nextErrorArray.push('It must be bigger than 1');
+    }
+
+    setErrorArray(nextErrorArray);
+
+    // If everything's correct, save and exit
+    if (nextErrorArray.length === 0) {
+      handleEdit(element.id, newDescription, newDuration);
+      toggleEdit();
+    }
   }
 
   return (
@@ -33,11 +54,12 @@ export default function EditPrompt({
           ></DescriptionInput>
           <HourWrapper>
             <HourInput
-              type="text"
+              type="number"
+              min="1"
               value={newDuration}
-              onChange={(e) => setNewDuration(e.target.value)}
+              onChange={(e) => setNewDuration(parseInt(e.target.value))}
             ></HourInput>
-            <HourIndicator> hours</HourIndicator>
+            <HourIndicator> {newDuration > 1 ? 'hours' : 'hour'}</HourIndicator>
           </HourWrapper>
         </InformationWrapper>
         <ButtonWrapper>
@@ -59,6 +81,9 @@ export default function EditPrompt({
             }}
           ></DeleteButton>
         </ButtonWrapper>
+        {errorArray.map((element) => {
+          return element;
+        })}
       </MainWrapper>
     </Dialog>
   );
@@ -108,7 +133,7 @@ const HourInput = styled.input`
   color: #212529;
   padding: 15px 5px;
   border: 0px;
-  width: 2rem;
+  width: 4rem;
   text-align: right;
 `;
 
@@ -116,6 +141,7 @@ const HourIndicator = styled.div`
   font-size: 12px;
   color: #adb5bd;
   margin: 0px 5px;
+  width: 2rem;
 `;
 
 const SaveButton = styled.input`
