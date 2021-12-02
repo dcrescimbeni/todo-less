@@ -16,7 +16,6 @@ export default function EditPrompt({
 
   let nextErrorArray = [];
   function handleSaveEdit() {
-    // Check for correct type (number)
     if (typeof newDuration !== 'number') {
       nextErrorArray.push('It must be a number');
     }

@@ -14,10 +14,39 @@ export default function AddItem({ handleAdd, showDialog, setShowDialog }) {
   const [taskCompleted, setTaskCompleted] = useState(false);
   const [taskColor, setTaskColor] = useState('3B82F6');
 
+  // Error handling
+  const [errorArray, setErrorArray] = useState([]);
+  let nextErrorArray = [];
+
   // Dialog config
   const inputRef = useRef();
 
   // Handlers
+  function saveAndExit() {
+    // Validation
+    if (typeof taskDuration !== 'number') {
+      nextErrorArray.push('It must be a number');
+    }
+
+    if (taskDuration % 1 !== 0) {
+      nextErrorArray.push('It must be an integer');
+    }
+
+    if (taskDuration < 1) {
+      nextErrorArray.push('It must be bigger than 1');
+    }
+
+    setErrorArray(nextErrorArray);
+
+    // If everything's correct, save and exit
+    if (nextErrorArray.length === 0) {
+      handleAdd(taskDescription, taskDuration, taskCompleted, taskColor);
+      setTaskDescription('');
+      setTaskDuration(1);
+      setTaskCompleted(false);
+    }
+  }
+
   function close() {
     setShowDialog(false);
     setTaskDescription('');
@@ -50,11 +79,12 @@ export default function AddItem({ handleAdd, showDialog, setShowDialog }) {
         <PickerWrapper>
           <DurationWrapper>
             <DurationInput
-              type="text"
+              type="number"
+              min="1"
               value={taskDuration}
               name="itemDuration"
               id="itemDuration"
-              onChange={(e) => setTaskDuration(e.target.value)}
+              onChange={(e) => setTaskDuration(parseInt(e.target.value))}
               autoComplete="off"
             />
             hour
@@ -74,21 +104,15 @@ export default function AddItem({ handleAdd, showDialog, setShowDialog }) {
             </Listbox>
           </ColorWrapper>
         </PickerWrapper>
-        <AddTaskButton
-          type="button"
-          value="Add"
-          onClick={(e) => {
-            handleAdd(taskDescription, taskDuration, taskCompleted, taskColor);
-            setTaskDescription('');
-            setTaskDuration(1);
-            setTaskCompleted(false);
-          }}
-        />
+        <AddTaskButton type="button" value="Add" onClick={saveAndExit} />
         <CancelButton
           type="button"
           value="Cancel"
           onClick={close}
         ></CancelButton>
+        {errorArray.map((element) => {
+          return element;
+        })}
       </MainWrapper>
     </Dialog>
   );
