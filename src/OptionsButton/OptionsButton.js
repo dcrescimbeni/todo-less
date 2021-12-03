@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button';
 import '@reach/menu-button/styles.css';
-import { MdEdit } from 'react-icons/md';
 
 import './OptionsButton.css';
 
@@ -10,7 +9,7 @@ export default function OptionsButton({ element, handleDelete, toggleEdit }) {
     <Wrapper>
       <Menu>
         <MenuButton>
-          <MdEdit />
+          <span aria-hidden>▾</span>
         </MenuButton>
         <MenuList>
           <MenuItem onSelect={toggleEdit}>Edit</MenuItem>
