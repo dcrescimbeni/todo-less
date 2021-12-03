@@ -1,3 +1,13 @@
+[data-reach-menu-button] {
+  opacity: 0.2;
+  margin-left: 7px;
+  border: none;
+}
+
+[data-reach-menu-button]:hover {
+  opacity: 1;
+}
+
 [data-reach-menu-button][aria-expanded='true'] {
   background: #000;
   color: white;

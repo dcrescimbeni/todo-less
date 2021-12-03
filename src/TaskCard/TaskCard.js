@@ -34,15 +34,13 @@ export default function TaskCard({
             toggleEdit={toggleEdit}
           ></OptionsButton>
         </TaskWrapper>
-        <EditWrapper>
-          <EditPrompt
-            element={element}
-            handleEdit={handleEdit}
-            toggleEdit={toggleEdit}
-            handleDelete={handleDelete}
-            editVisible={editVisible}
-          ></EditPrompt>
-        </EditWrapper>
+        <EditPrompt
+          element={element}
+          handleEdit={handleEdit}
+          toggleEdit={toggleEdit}
+          handleDelete={handleDelete}
+          editVisible={editVisible}
+        ></EditPrompt>
       </Wrapper>
     </>
   );
@@ -61,7 +59,9 @@ const TaskWrapper = styled.div`
   opacity: ${(props) => (props.completed ? '0.7' : '1')};
 `;
 
-const EditWrapper = styled.div``;
+const EditWrapper = styled.p`
+  opacity: 0.5;
+`;
 
 const ColorCode = styled.div`
   height: 22px;

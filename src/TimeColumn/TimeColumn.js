@@ -114,7 +114,7 @@ export default function TimeColumn({
 // ########################
 
 const MainColumn = styled.div`
-  padding: 30px;
+  padding: 5px;
   position: relative;
   isolation: isolate;
 `;
@@ -155,7 +155,7 @@ const HourTicksWrapper = styled.div`
   position: absolute;
   z-index: 1;
   width: calc(100% + 45px);
-  margin-left: calc(-30px - 45px);
+  margin-left: calc(-30px - 20px);
   border-top: 1px solid #dee2e6;
 `;
 
