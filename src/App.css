@@ -11,10 +11,8 @@ body {
 }
 
 .column {
-  /* margin-top: 30px; */
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   flex-basis: clamp(250px, 100%, 460px);
-  /* width: 100%; */
 }

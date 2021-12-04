@@ -3,11 +3,18 @@
   border: 0px;
   background-color: #f3f4f6;
 }
+[data-reach-dialog-overlay] {
+  display: flex;
+  justify-content: center;
+}
 
 [data-reach-dialog-content] {
-  width: 100%;
+  flex-basis: clamp(250px, 100%, 515px);
   padding: 0px;
-  /* margin: 0px; */
+  margin: 0px;
+  margin-top: 10%;
+  margin-bottom: auto;
+  border-radius: 5px;
 }
 
 .close-button {
