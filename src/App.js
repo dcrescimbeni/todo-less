@@ -63,7 +63,7 @@ function App() {
     setTaskDuration(1);
   }
 
-  function handleEdit(id, newDescription, newDuration) {
+  function handleEdit(id, newDescription, newDuration, newColor) {
     let current = [...todoList];
 
     let nextTasks = current.map((element) => {
@@ -73,7 +73,7 @@ function App() {
           description: newDescription,
           duration: newDuration,
           completed: element.completed,
-          color: element.color,
+          color: newColor,
         };
       } else {
         return element;

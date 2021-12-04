@@ -166,7 +166,7 @@ const DescriptionHelper = styled.p`
 const DescriptionInput = styled.input`
   font-size: 20px;
   font-weight: bold;
-  color: red; // Why it doesn't apply?
+  color: #212529; // Why it doesn't apply?
   border: 0px;
   width: calc(100% - 5px);
   background-color: #f3f4f6;
@@ -185,7 +185,7 @@ const DurationInput = styled.input`
   font-weight: bold;
   font-size: 16px;
   color: #212529;
-  width: 1.5rem;
+  width: 3rem;
   border: 0px;
   border-radius: 5px;
   text-align: right;
