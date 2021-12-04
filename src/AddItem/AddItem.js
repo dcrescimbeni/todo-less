@@ -166,7 +166,7 @@ const DescriptionHelper = styled.p`
 const DescriptionInput = styled.input`
   font-size: 20px;
   font-weight: bold;
-  color: #212529;
+  color: red; // Why it doesn't apply?
   border: 0px;
   width: calc(100% - 5px);
   background-color: #f3f4f6;
