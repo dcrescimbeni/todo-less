@@ -135,8 +135,7 @@ const UnstyledList = styled.ul`
 
 const TaskElement = styled.li`
   margin: 12px 0px;
-  height: ${(props) => props.size * 71 - 2 - 12}px;
-  border: 1px solid #adb5bd;
+  height: ${(props) => props.size * 71 - 12}px;
   border-radius: 5px;
   display: flex;
   align-items: center;
