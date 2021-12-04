@@ -99,12 +99,14 @@ export default function TimeColumn({
           timeStart={timeStart}
           setTimeStart={setTimeStart}
         ></ConfigDialog>
-        <input
-          type="button"
-          value="Config"
-          onClick={(e) => setShowConfigDialog(true)}
-        />
-        <input type="button" value="Clear all" />
+        <OptionsButtonsWrapper>
+          <ConfigButton
+            type="button"
+            value="Options"
+            onClick={(e) => setShowConfigDialog(true)}
+          ></ConfigButton>
+          <ClearButton type="button" value="Clear all tasks"></ClearButton>
+        </OptionsButtonsWrapper>
       </MainColumn>
     </DragDropContext>
   );
@@ -156,6 +158,34 @@ const HourTicksWrapper = styled.div`
   width: calc(100% + 45px);
   margin-left: calc(-30px - 20px);
   border-top: 1px solid #dee2e6;
+`;
+
+// Buttons
+// #######
+const OptionsButtonsWrapper = styled.div`
+  display: flex;
+  margin: 20px 0px;
+`;
+
+const ConfigButton = styled.input`
+  background: #4b5563;
+  color: white;
+  font-weight: bold;
+  border: 0px;
+  border-radius: 5px;
+  padding: 10px 0px;
+  flex: 1;
+  margin-right: 10px;
+`;
+const ClearButton = styled.input`
+  background: #4b5563;
+  color: white;
+  font-weight: bold;
+  border: 0px;
+  border-radius: 5px;
+  padding: 10px 0px;
+  flex: 1;
+  margin-left: 10px;
 `;
 
 // Drag and drop explaination source:
