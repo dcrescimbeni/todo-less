@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Dialog } from '@reach/dialog';
 import '@reach/dialog/styles.css';
+import styled from 'styled-components';
+import './ConfigDialog.css';
 
 export default function ConfigDialog({
   showConfigDialog,
@@ -44,20 +46,86 @@ export default function ConfigDialog({
       isOpen={showConfigDialog}
       onDismiss={closeAndCancel}
       aria-label="Configuration options dialog"
+      className={'configModal'}
     >
-      Starting time{' '}
-      <input
-        type="number"
-        name="startingTimeInput"
-        id="startingTimeInput"
-        value={newStartingTime}
-        onChange={(e) => setNewStartingTime(parseInt(e.target.value))}
-      />
-      <input type="button" value="Save" onClick={closeAndSave} />
-      <input type="button" value="Cancel" onClick={closeAndCancel} />
-      {errorArray.map((value) => {
-        return <p>{value}</p>;
-      })}
+      <Wrapper>
+        <InputWrapper>
+          Starting time{' '}
+          <InputStartingTime
+            type="number"
+            name="startingTimeInput"
+            id="startingTimeInput"
+            value={newStartingTime}
+            onChange={(e) => setNewStartingTime(parseInt(e.target.value))}
+          ></InputStartingTime>
+        </InputWrapper>
+        <ButtonsWrapper>
+          <SaveButton
+            type="button"
+            value="Save"
+            onClick={closeAndSave}
+          ></SaveButton>
+          <CancelButton
+            type="button"
+            value="Cancel"
+            onClick={closeAndCancel}
+          ></CancelButton>
+          {errorArray.map((value) => {
+            return <p>{value}</p>;
+          })}
+        </ButtonsWrapper>
+      </Wrapper>
     </Dialog>
   );
 }
+
+const Wrapper = styled.div`
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+// Input
+
+const InputWrapper = styled.div``;
+
+const InputStartingTime = styled.input`
+  font-weight: bold;
+  font-size: 16px;
+  color: #212529;
+  width: 3rem;
+  border: 0px;
+  border-radius: 5px;
+  text-align: right;
+  padding-top: 4px;
+  padding-right: 5px;
+  margin-right: 3px;
+  background-color: #f3f4f6;
+`;
+
+// Buttons
+
+const ButtonsWrapper = styled.div``;
+
+const SaveButton = styled.input`
+  background: #3b82f6;
+  color: white;
+  font-weight: bold;
+  border: 0px;
+  border-radius: 5px;
+  margin-right: 5px;
+  padding: 10px 0px;
+  width: 50px;
+`;
+
+const CancelButton = styled.input`
+  background: #4b5563;
+  color: white;
+  font-weight: bold;
+  border: 0px;
+  border-radius: 5px;
+  margin-left: 5px;
+  padding: 10px 0px;
+  flex: 50px;
+`;
