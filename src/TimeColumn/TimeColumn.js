@@ -20,6 +20,7 @@ export default function TimeColumn({
   showDialog,
   setShowDialog,
   handleToggledTask,
+  updateLocalStorage,
 }) {
   // UseState to control config dialog
   const [showConfigDialog, setShowConfigDialog] = useState(false);
@@ -56,6 +57,16 @@ export default function TimeColumn({
   }
 
   let hourLinePosition = calculateHourLinePosition();
+
+  function handleClearTasks() {
+    // Ask for confirmation
+    let confirmation = window.confirm('Do you want to clear all the tasks?');
+
+    // Update task array if yes
+    if (confirmation) {
+      updateLocalStorage([]);
+    }
+  }
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -131,7 +142,11 @@ export default function TimeColumn({
             value="Options"
             onClick={(e) => setShowConfigDialog(true)}
           ></ConfigButton>
-          <ClearButton type="button" value="Clear all tasks"></ClearButton>
+          <ClearButton
+            type="button"
+            value="Clear all tasks"
+            onClick={handleClearTasks}
+          ></ClearButton>
         </OptionsButtonsWrapper>
       </MainColumn>
     </DragDropContext>

@@ -101,6 +101,7 @@ export default function AddItem({ handleAdd, showDialog, setShowDialog }) {
                 onChange={(e) => {
                   setTaskColor(e);
                 }}
+                defaultValue="3B82F6"
               >
                 <ListboxOption value="3B82F6">Blue</ListboxOption>
                 <ListboxOption value="EF4444">Red</ListboxOption>

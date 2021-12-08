@@ -132,6 +132,7 @@ function App() {
         showDialog={showDialog}
         setShowDialog={setShowDialog}
         handleToggledTask={handleToggledTask}
+        updateLocalStorage={updateLocalStorage}
       />
     </div>
   );

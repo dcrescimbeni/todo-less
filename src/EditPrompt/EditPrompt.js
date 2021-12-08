@@ -12,7 +12,7 @@ export default function EditPrompt({
 }) {
   const [newDescription, setNewDescription] = useState(element.description);
   const [newDuration, setNewDuration] = useState(parseInt(element.duration));
-  const [newColor, setNewColor] = useState('3B82F6');
+  const [newColor, setNewColor] = useState(element.color);
 
   const [errorArray, setErrorArray] = useState([]);
   let nextErrorArray = [];

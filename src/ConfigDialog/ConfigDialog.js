@@ -116,7 +116,7 @@ const SaveButton = styled.input`
   border-radius: 5px;
   margin-right: 5px;
   padding: 10px 0px;
-  width: 50px;
+  width: 70px;
 `;
 
 const CancelButton = styled.input`
@@ -127,5 +127,5 @@ const CancelButton = styled.input`
   border-radius: 5px;
   margin-left: 5px;
   padding: 10px 0px;
-  flex: 50px;
+  width: 50px;
 `;
