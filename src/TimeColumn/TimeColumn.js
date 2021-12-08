@@ -6,6 +6,8 @@ import AddButton from '../AddButton/AddButton';
 import AddItem from '../AddItem/AddItem';
 import TaskCard from '../TaskCard/TaskCard';
 import ConfigDialog from '../ConfigDialog/ConfigDialog';
+import NoTasksMessage from '../NoTasksMessage/NoTasksMessage';
+import HourLine from '../HourLine/HourLine';
 
 export default function TimeColumn({
   todoList,
@@ -36,10 +38,33 @@ export default function TimeColumn({
     }
   });
 
+  function calculateHourLinePosition() {
+    let now = new Date();
+
+    // Get hours passed from starting time
+    let passingHours = now.getHours() - timeStart;
+    // Calculate minutes
+    let passingMinutes = now.getMinutes() / 60;
+
+    let totalTime = passingHours + passingMinutes;
+
+    if (hourTickers.length < totalTime) {
+      return -1;
+    }
+
+    return passingHours + passingMinutes;
+  }
+
+  let hourLinePosition = calculateHourLinePosition();
+
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <MainColumn className="column">
+        <HourLineWrapper position={hourLinePosition}>
+          <HourLine></HourLine>
+        </HourLineWrapper>
         <TimeBlockWrapper>
+          <NoTasksMessage todoList={todoList}></NoTasksMessage>
           <Droppable droppableId="taskTimes">
             {(provided) => (
               <UnstyledList
@@ -84,6 +109,7 @@ export default function TimeColumn({
             );
           })}
         </HourTicksWrapper>
+
         <AddItem
           handleAdd={handleAdd}
           showDialog={showDialog}
@@ -186,6 +212,14 @@ const ClearButton = styled.input`
   padding: 10px 0px;
   flex: 1;
   margin-left: 10px;
+`;
+
+// Hour line
+const HourLineWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+  top: ${(props) => props.position * 71 + 5}px;
 `;
 
 // Drag and drop explaination source:
