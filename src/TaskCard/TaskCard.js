@@ -59,10 +59,6 @@ const TaskWrapper = styled.div`
   opacity: ${(props) => (props.completed ? '0.7' : '1')};
 `;
 
-const EditWrapper = styled.p`
-  opacity: 0.5;
-`;
-
 const ColorCode = styled.div`
   height: 22px;
   width: 22px;

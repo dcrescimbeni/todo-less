@@ -18,19 +18,8 @@ if (!localStorage.getItem('startingTime')) {
 
 let items = JSON.parse(localStorage.getItem('todolist'));
 
-let colors = {
-  red: 'EF4444',
-  yellow: 'F59E0B',
-  blue: '3B82F6',
-  green: '10B981',
-};
-
 function App() {
   const [todoList, setTodoList] = useState(items);
-
-  // Task related states
-  const [taskDescription, setTaskDescription] = useState('');
-  const [taskDuration, setTaskDuration] = useState(1);
 
   // General configuration related states
   const [timeStart, setTimeStart] = useState(defaultStartingTime);
@@ -59,8 +48,6 @@ function App() {
       },
     ];
     updateLocalStorage(tasks);
-    setTaskDescription('');
-    setTaskDuration(1);
   }
 
   function handleEdit(id, newDescription, newDuration, newColor) {
