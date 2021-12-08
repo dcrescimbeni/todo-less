@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Welcome to Todo-Less!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Motivation
 
-## Available Scripts
+The inspiration for this app is Cal Newport's "time blocking" approach to "give every minute of the day a job."
 
-In the project directory, you can run:
+I've noticed that my productivity skyrockets when I consciously plan my day and allocate specific hours for the tasks. Suddenly, I'm more focused and less prone to jump from task to task.
 
-### `npm start`
+I've developed "todo-less" with this in mind: a minimalist, distraction-free environment to plan your day and get the job done.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# How to use it
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## First
 
-### `npm test`
+1. Set the starting time of your day (default is 9:00)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Add tasks, set their description, duration, and color code
 
-### `npm run build`
+3. Rearrange by dragging and dropping if you want to change the order
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## While working
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Mark tasks as completed by clicking the circle
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. If a task is taking more or less than previously expected, change its duration
 
-### `npm run eject`
+3. You can also rearrange the order of the tasks by dragging and dropping
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## When you finish
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Click the "clear tasks" to delete all tasks
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. Plan your next day's tasks
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# How to
 
-## Learn More
+- Add a new task: Click on the "Add a new task" button
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Edit a task: Click on the "v" arrow and click "Edit." Alternatively, double click on the task description
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Rearrange a task: click and hold to drag. On mobile, tap and hold
 
-### Code Splitting
+- Delete a task: Click on the "v" arrow and click "Delete." You can also delete a task from the "Edit" prompt
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Change starting hour: click on the "options" button and set a new starting hour
 
-### Analyzing the Bundle Size
+- Clear all tasks: click on the "clear all tasks" button
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Feedback
 
-### Making a Progressive Web App
+I'd love to hear your feedback, so please don't hesitate to open an issue or contact me.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Also, I love web development in general, so if this sparks some idea or you want to discuss it, I'm open to talking.
 
-### Advanced Configuration
+# Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+You can follow me on Twitter: https://twitter.com/dinocres1
 
-### Deployment
+Or shoot an email to: crescimbenidino@gmail.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Further reading
 
-### `npm run build` fails to minify
+- [Deep Habits: The Importance of Planning Every Minute of Your Work Day](https://www.calnewport.com/blog/2013/12/21/deep-habits-the-importance-of-planning-every-minute-of-your-work-day/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Time block planner](https://www.timeblockplanner.com/)
