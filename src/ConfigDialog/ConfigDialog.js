@@ -8,7 +8,7 @@ export default function ConfigDialog({
   showConfigDialog,
   setShowConfigDialog,
   timeStart,
-  setTimeStart,
+  updateStartingTime,
 }) {
   const [newStartingTime, setNewStartingTime] = useState(timeStart);
   const [errorArray, setErrorArray] = useState([]);
@@ -37,7 +37,7 @@ export default function ConfigDialog({
 
     if (nextErrorArray.length === 0) {
       setShowConfigDialog(false);
-      setTimeStart(newStartingTime);
+      updateStartingTime(newStartingTime);
     }
   }
 

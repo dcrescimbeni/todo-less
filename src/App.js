@@ -34,6 +34,11 @@ function App() {
     localStorage.setItem('todolist', JSON.stringify(newItems));
   }
 
+  function updateStartingTime(newStartingTime) {
+    setTimeStart(newStartingTime);
+    localStorage.setItem('startingTime', newStartingTime);
+  }
+
   // Handles
   function handleAdd(description, duration, completed, color) {
     let uniqueId = uuidv4();
@@ -113,7 +118,6 @@ function App() {
         todoList={todoList}
         handleOnDragEnd={handleOnDragEnd}
         timeStart={timeStart}
-        setTimeStart={setTimeStart}
         handleAdd={handleAdd}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
@@ -121,6 +125,7 @@ function App() {
         setShowDialog={setShowDialog}
         handleToggledTask={handleToggledTask}
         updateLocalStorage={updateLocalStorage}
+        updateStartingTime={updateStartingTime}
       />
       <Footer></Footer>
     </div>

@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   margin: 0px -6px;
+  width: 100%;
 `;
 
 const Tip = styled.div`

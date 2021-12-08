@@ -13,7 +13,6 @@ export default function TimeColumn({
   todoList,
   handleOnDragEnd,
   timeStart,
-  setTimeStart,
   handleAdd,
   handleEdit,
   handleDelete,
@@ -21,6 +20,7 @@ export default function TimeColumn({
   setShowDialog,
   handleToggledTask,
   updateLocalStorage,
+  updateStartingTime,
 }) {
   // UseState to control config dialog
   const [showConfigDialog, setShowConfigDialog] = useState(false);
@@ -57,6 +57,11 @@ export default function TimeColumn({
   }
 
   let hourLinePosition = calculateHourLinePosition();
+
+  // Every 5 minutes (300.000 ms) update line position
+  setInterval(() => {
+    hourLinePosition = calculateHourLinePosition();
+  }, 300000);
 
   function handleClearTasks() {
     // Ask for confirmation
@@ -134,7 +139,7 @@ export default function TimeColumn({
           showConfigDialog={showConfigDialog}
           setShowConfigDialog={setShowConfigDialog}
           timeStart={timeStart}
-          setTimeStart={setTimeStart}
+          updateStartingTime={updateStartingTime}
         ></ConfigDialog>
         <OptionsButtonsWrapper>
           <ConfigButton
