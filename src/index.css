@@ -1,4 +1,10 @@
 body {
   background: #dee2e6;
   font-family: 'Roboto', sans-serif;
+  margin: 0px;
+}
+
+html,
+body {
+  height: 100%;
 }
