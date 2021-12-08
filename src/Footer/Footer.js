@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { FaGithub } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
 
 export default function Footer_() {
   return (
@@ -15,6 +16,9 @@ export default function Footer_() {
           target="_blank"
         >
           <FaGithub />
+        </SocialMediaIcon>
+        <SocialMediaIcon href="mailto:crescimbenidino@gmail.com">
+          <FaEnvelope />
         </SocialMediaIcon>
       </SocialMediaWrapper>
     </FooterBar>
