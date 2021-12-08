@@ -49,7 +49,7 @@ export default function TimeColumn({
 
     let totalTime = passingHours + passingMinutes;
 
-    if (hourTickers.length < totalTime) {
+    if (hourTickers.length < totalTime || todoList.length === 0) {
       return -1;
     }
 
