@@ -84,11 +84,14 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
 `;
 
 // Input
 
-const InputWrapper = styled.div``;
+const InputWrapper = styled.div`
+  margin: 10px 0px;
+`;
 
 const InputStartingTime = styled.input`
   font-weight: bold;
