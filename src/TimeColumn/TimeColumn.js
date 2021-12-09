@@ -237,9 +237,9 @@ const ClearButton = styled.input`
 // Hour line
 const HourLineWrapper = styled.div`
   position: absolute;
-  width: 100%;
   z-index: 3;
   top: ${(props) => props.position * 71 + 5}px;
+  width: calc(100% - 6px);
 `;
 
 // Drag and drop explaination source:

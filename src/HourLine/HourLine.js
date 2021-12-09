@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import './HourLine.css';
 
 export default function HourLine() {
   return (
     <Wrapper>
       <Tip></Tip>
       <Line></Line>
-      <Tip></Tip>
+      <Tip className="rightTip"></Tip>
     </Wrapper>
   );
 }
@@ -13,8 +14,12 @@ export default function HourLine() {
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  margin: 0px -6px;
-  width: 100%;
+  margin: 0px -4px;
+  width: calc(100% + 6px);
+
+  @media (min-width: 530px) {
+    margin: 0px -5px;
+  }
 `;
 
 const Tip = styled.div`
