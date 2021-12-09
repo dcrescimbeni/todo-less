@@ -26,15 +26,16 @@ export default function Footer_() {
 }
 
 const FooterBar = styled.footer`
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: calc(100% - 40px);
   padding: 20px;
   font-size: 1.35rem;
+  background-color: #ededed;
 `;
 
 const AppTitle = styled.p`
