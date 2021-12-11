@@ -1,7 +1,8 @@
 body {
-  background: #dee2e6;
+  background-color: #ededed;
   font-family: 'Roboto', sans-serif;
   margin: 0px;
+  position: relative;
 }
 
 html,

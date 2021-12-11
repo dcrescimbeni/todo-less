@@ -1,6 +1,7 @@
 import './App.css';
 import TimeColumn from './TimeColumn/TimeColumn';
 import Footer from './Footer/Footer';
+
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -13,8 +14,13 @@ if (!localStorage.getItem('todolist')) {
   localStorage.setItem('todolist', '[]');
 }
 
+let startingTime;
+
 if (!localStorage.getItem('startingTime')) {
   localStorage.setItem('startingTime', defaultStartingTime);
+  startingTime = defaultStartingTime;
+} else {
+  startingTime = localStorage.getItem('startingTime');
 }
 
 let items = JSON.parse(localStorage.getItem('todolist'));
@@ -23,7 +29,7 @@ function App() {
   const [todoList, setTodoList] = useState(items);
 
   // General configuration related states
-  const [timeStart, setTimeStart] = useState(defaultStartingTime);
+  const [timeStart, setTimeStart] = useState(startingTime);
 
   // Dialog function useState
   const [showDialog, setShowDialog] = useState(false);

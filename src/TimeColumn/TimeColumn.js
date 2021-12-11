@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import HourTickElement from '../HourTickElement/HourTickElement';
@@ -56,11 +56,13 @@ export default function TimeColumn({
     return passingHours + passingMinutes;
   }
 
-  let hourLinePosition = calculateHourLinePosition();
+  const [hourLinePosition, setHourLinePosition] = useState(
+    calculateHourLinePosition()
+  );
 
   // Every 5 minutes (300.000 ms) update line position
   setInterval(() => {
-    hourLinePosition = calculateHourLinePosition();
+    setHourLinePosition(calculateHourLinePosition());
   }, 300000);
 
   function handleClearTasks() {
@@ -237,9 +239,9 @@ const ClearButton = styled.input`
 // Hour line
 const HourLineWrapper = styled.div`
   position: absolute;
-  width: 100%;
   z-index: 3;
   top: ${(props) => props.position * 71 + 5}px;
+  width: calc(100% - 6px);
 `;
 
 // Drag and drop explaination source:
