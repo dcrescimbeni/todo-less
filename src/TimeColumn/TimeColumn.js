@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import HourTickElement from '../HourTickElement/HourTickElement';
@@ -56,11 +56,13 @@ export default function TimeColumn({
     return passingHours + passingMinutes;
   }
 
-  let hourLinePosition = calculateHourLinePosition();
+  const [hourLinePosition, setHourLinePosition] = useState(
+    calculateHourLinePosition()
+  );
 
   // Every 5 minutes (300.000 ms) update line position
   setInterval(() => {
-    hourLinePosition = calculateHourLinePosition();
+    setHourLinePosition(calculateHourLinePosition());
   }, 300000);
 
   function handleClearTasks() {
