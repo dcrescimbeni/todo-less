@@ -14,8 +14,13 @@ if (!localStorage.getItem('todolist')) {
   localStorage.setItem('todolist', '[]');
 }
 
+let startingTime;
+
 if (!localStorage.getItem('startingTime')) {
   localStorage.setItem('startingTime', defaultStartingTime);
+  startingTime = defaultStartingTime;
+} else {
+  startingTime = localStorage.getItem('startingTime');
 }
 
 let items = JSON.parse(localStorage.getItem('todolist'));
@@ -24,7 +29,7 @@ function App() {
   const [todoList, setTodoList] = useState(items);
 
   // General configuration related states
-  const [timeStart, setTimeStart] = useState(defaultStartingTime);
+  const [timeStart, setTimeStart] = useState(startingTime);
 
   // Dialog function useState
   const [showDialog, setShowDialog] = useState(false);

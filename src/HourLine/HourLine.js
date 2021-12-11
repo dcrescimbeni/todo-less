@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 const Tip = styled.div`
   width: 6px;
   height: 6px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background-color: red;
   margin: 0px -1px;
 `;
